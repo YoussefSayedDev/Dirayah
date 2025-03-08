@@ -143,4 +143,16 @@
   body {
     @apply bg-background text-foreground;
   }
+  .auth-container {
+    @apply flex h-screen items-center justify-center lg:justify-baseline;
+  }
+  .auth-form-container {
+    @apply flex flex-col lg:w-1/2;
+  }
+  .auth-form-section {
+    @apply flex w-full items-center justify-center md:w-1/2;
+  }
+  .auth-image-section {
+    @apply hidden h-full w-1/2 lg:block;
+  }
 }
