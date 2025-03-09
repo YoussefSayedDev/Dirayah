@@ -1,6 +1,8 @@
 "use client";
+import { Languages, Locale } from "@/lib/types/localization";
 import { cn } from "@/lib/utils";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useLocale } from "next-intl";
 import React, { useState } from "react";
 import { Input } from "../ui/input";
 
@@ -9,9 +11,12 @@ interface PasswordInputProps extends React.ComponentProps<"input"> {
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, dir = "ltr", ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
-    const isRTL = dir === "rtl";
+
+    const locale = useLocale() as Locale;
+
+    const isRTL = locale === Languages.Arabic;
 
     return (
       <div className="relative">

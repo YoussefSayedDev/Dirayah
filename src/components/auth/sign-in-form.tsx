@@ -1,6 +1,9 @@
 "use client";
+import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
+import { SignInFormSchemaType } from "@/lib/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LogIn } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,22 +18,13 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 
-const SignInFormSchema = z.object({
-  username: z
-    .string()
-    .min(1)
-    .regex(
-      /^[a-zA-Z0-9_]+$/,
-      "Only letters, numbers, and underscores are allowed",
-    ),
-  password: z.string().min(1, "Password is required"),
-});
-
-type SignInFormSchemaType = z.infer<typeof SignInFormSchema>;
-
 export function SignInForm() {
   const [error, setError] = useState("");
   const [isPending, setIsPending] = useState(false);
+
+  // Localization
+  const t = useTranslations("auth.signIn");
+  const { SignInFormSchema } = useCreateAuthSchema();
 
   const form = useForm<SignInFormSchemaType>({
     resolver: zodResolver(SignInFormSchema),
@@ -65,14 +59,14 @@ export function SignInForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t("form.usernameLabel")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your username"
+                    placeholder={t("form.usernamePlaceholder")}
                     type="text"
                     {...field}
                     className="h-12"
-                    aria-label="Username"
+                    aria-label={t("form.usernameLabel")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -86,13 +80,13 @@ export function SignInForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t("form.passwordLabel")}</FormLabel>
                 <FormControl>
                   <PasswordInput
-                    dir="ltr"
-                    placeholder="Enter your password"
+                    placeholder={t("form.passwordPlaceholder")}
                     {...field}
                     className="h-12"
+                    aria-label={t("form.passwordLabel")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -106,7 +100,7 @@ export function SignInForm() {
             type="submit"
             className="w-full select-none"
           >
-            Sign In
+            {t("form.signIn")}
             <LogIn className="ml-2 h-5 w-5" />
           </LoadingButton>
         </div>
