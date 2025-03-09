@@ -11,27 +11,25 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 
+import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
+import { SignUpFormSchemaType } from "@/lib/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { z } from "zod";
 import { PasswordInput } from "../shared/password-input";
-
-const SignUpFormSchema = z.object({
-  username: z.string().min(3),
-  email: z.string().email(),
-  password: z.string().min(8),
-});
-
-type SignUpFormSchemaType = z.infer<typeof SignUpFormSchema>;
-
 export function SignUpForm() {
   const [error, setError] = useState("");
   const [isPending, setIsPending] = useState(false);
+
+  // Localization
+  const t = useTranslations("auth.signUp");
+  const { SignUpFormSchema } = useCreateAuthSchema();
 
   const form = useForm<SignUpFormSchemaType>({
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       username: "",
+      email: "",
       password: "",
     },
   });
@@ -60,14 +58,14 @@ export function SignUpForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t("form.usernameLabel")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your username"
+                    placeholder={t("form.usernamePlaceholder")}
                     type="text"
                     {...field}
                     className="h-12"
-                    aria-label="Username"
+                    aria-label={t("form.usernameLabel")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -81,14 +79,14 @@ export function SignUpForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("form.emailLabel")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your email"
+                    placeholder={t("form.emailPlaceholder")}
                     type="text"
                     {...field}
                     className="h-12"
-                    aria-label="Email"
+                    aria-label={t("form.emailLabel")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -102,13 +100,13 @@ export function SignUpForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t("form.passwordLabel")}</FormLabel>
                 <FormControl>
                   <PasswordInput
-                    dir="ltr"
-                    placeholder="Enter your password"
+                    placeholder={t("form.passwordPlaceholder")}
                     {...field}
                     className="h-12"
+                    aria-label={t("form.passwordLabel")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -122,7 +120,7 @@ export function SignUpForm() {
             type="submit"
             className="w-full select-none"
           >
-            Sign Up
+            {t("form.signUp")}
             <LogIn className="ml-2 h-5 w-5" />
           </LoadingButton>
         </div>

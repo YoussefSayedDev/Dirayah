@@ -1,22 +1,25 @@
 import { SignUpForm } from "@/components/auth/sign-up-form";
+import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  // Localization
+  const t = await getTranslations("auth.signUp");
   return (
     <main className="auth-container">
       {/* Form Section */}
       <section className="auth-form-section">
         <div className="auth-form-container">
-          <h1 className="text-2xl font-semibold">Sign Up</h1>
+          <h1 className="text-2xl font-semibold">{t("heading")}</h1>
           <p className="text-muted-foreground mt-2 text-base">
-            Sign up for a new account
+            {t("description")}
           </p>
           <div className="my-8">
             <SignUpForm />
           </div>
           <Link href="/sign-in" className="block text-center hover:underline">
-            Already have an account? Sign in
+            {t("hasAccount")}
           </Link>
         </div>
       </section>

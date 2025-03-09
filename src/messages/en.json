@@ -1,0 +1,59 @@
+{
+  "auth": {
+    "signIn": {
+      "heading": "Sign in",
+      "description": "Sign in to your account",
+      "noAccount": "Don't have an account?",
+      "form": {
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "Enter your username",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "signIn": "Sign in"
+      }
+    },
+    "signUp": {
+      "heading": "Sign up",
+      "description": "Sign up for your account",
+      "hasAccount": "Already have an account? Sign in",
+      "form": {
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "Enter your username",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "signUp": "Sign up"
+      }
+    },
+    "forgotPassword": {
+      "heading": "Forgot password",
+      "description": "Forgot password",
+      "email": "Email",
+      "submit": "Submit"
+    },
+    "resetPassword": {
+      "heading": "Reset password",
+      "description": "Reset password",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Submit"
+    },
+    "form": {
+      "validation": {
+        "username": {
+          "min": "Username must be at least 3 characters long",
+          "regex": "Only letters, numbers, and underscores are allowed"
+        },
+        "email": {
+          "min": "Email is required",
+          "email": "Email is not valid"
+        },
+        "password": {
+          "min": "Password must be at least 8 characters long",
+          "regex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+        }
+      }
+    }
+  }
+}
