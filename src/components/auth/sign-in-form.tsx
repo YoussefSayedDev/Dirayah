@@ -4,11 +4,13 @@ import { SignInFormSchemaType } from "@/lib/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { z } from "zod";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { LoadingButton } from "../shared/loading-button";
 import { PasswordInput } from "../shared/password-input";
+import { Checkbox } from "../ui/checkbox";
 import {
   FormControl,
   FormField,
@@ -17,6 +19,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { Separator } from "../ui/separator";
 
 export function SignInForm() {
   const [error, setError] = useState("");
@@ -52,7 +55,6 @@ export function SignInForm() {
               {error}
             </p>
           )}
-
           {/* Username Field */}
           <FormField
             control={form.control}
@@ -73,7 +75,6 @@ export function SignInForm() {
               </FormItem>
             )}
           />
-
           {/* Password Field */}
           <FormField
             control={form.control}
@@ -93,6 +94,26 @@ export function SignInForm() {
               </FormItem>
             )}
           />
+          {/* Foregot Password & Remember me */}
+          <div className="flex items-center justify-between">
+            {/* Checkbox */}
+            <div className="flex items-center space-x-2">
+              <Checkbox id="terms" className="cursor-pointer" />
+              <label
+                htmlFor="terms"
+                className="cursor-pointer text-xs leading-none font-medium opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                {t("form.rememberMe")}
+              </label>
+            </div>
+
+            {/* Forgot Password */}
+            <div>
+              <Link href="/forgot-password" className="text-xs hover:underline">
+                {t("form.forgotPassword")}
+              </Link>
+            </div>
+          </div>
 
           {/* Submit Button */}
           <LoadingButton
@@ -103,6 +124,27 @@ export function SignInForm() {
             {t("form.signIn")}
             <LogIn className="ml-2 h-5 w-5" />
           </LoadingButton>
+
+          {/* Or sign in with  */}
+          <div className="flex items-center justify-between">
+            <Separator className="my-4 !w-[35%]" />
+            <span className="w-28 text-center text-xs text-gray-500">
+              {t("form.orSignInWith")}
+            </span>
+            <Separator className="my-4 !w-[35%]" />
+          </div>
+
+          {/* Sign In using Google or Facebook */}
+          <div className="flex items-center justify-between gap-4">
+            <div className="border-gary-200 hover:bg-foreground hover:text-accent flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200">
+              <FaGoogle className="h-4 w-4" />
+              <span className="text-sm font-medium">{t("form.google")}</span>
+            </div>
+            <div className="border-gary-200 hover:bg-foreground hover:text-accent flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200">
+              <FaFacebook className="h-4 w-4" />
+              <span className="text-sm font-medium">{t("form.facebook")}</span>
+            </div>
+          </div>
         </div>
       </form>
     </FormProvider>

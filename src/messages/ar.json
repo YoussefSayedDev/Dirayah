@@ -1,15 +1,20 @@
 {
   "auth": {
     "signIn": {
-      "heading": "تسجيل الدخول",
-      "description": "مرحبًا مجددًا! أدخل بياناتك لتسجيل الدخول.",
-      "noAccount": "جديد هنا؟ اشترك الآن",
+      "heading": "مرحبًا بعودتك إلى StudyFlow",
+      "description": "أدخل اسم المستخدم وكلمة المرور للمتابعة.",
+      "noAccount": "ليس لديك حساب؟ سجل الدخول",
       "form": {
         "usernameLabel": "اسم المستخدم",
         "usernamePlaceholder": "اسم المستخدم الخاص بك",
         "passwordLabel": "كلمة المرور",
         "passwordPlaceholder": "كلمة المرور الخاصة بك",
-        "signIn": "تسجيل الدخول"
+        "signIn": "تسجيل الدخول",
+        "orSignInWith": "او سجل الدخول باستخدام",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "google": "جوجل",
+        "facebook": "فيسبوك"
       }
     },
     "signUp": {
@@ -23,7 +28,10 @@
         "emailPlaceholder": "عنوان بريدك الإلكتروني",
         "passwordLabel": "كلمة المرور",
         "passwordPlaceholder": "أنشئ كلمة مرور",
-        "signUp": "إنشاء حساب"
+        "signUp": "إنشاء حساب",
+        "orSignUpWith": "أو إنشاء حساب باستخدام",
+        "google": "جوجل",
+        "facebook": "فيسبوك"
       }
     },
     "forgotPassword": {

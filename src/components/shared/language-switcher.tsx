@@ -96,7 +96,11 @@ export function LanguageSwitcher() {
               height={20}
               className={cn(isChangeLanguage ? "opacity-50" : "")}
             />
-            {isChangeLanguage ? t("changingLanguage") : selectedLanguage.name}
+            {isChangeLanguage ? (
+              <p className="text-xs"> {t("changingLanguage")} </p>
+            ) : (
+              selectedLanguage.name
+            )}
           </span>
           {isChangeLanguage ? (
             <Loader2 className="h-4 w-4 animate-spin" />

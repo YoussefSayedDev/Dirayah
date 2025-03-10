@@ -10,9 +10,9 @@ export default async function SignUpPage() {
     <main className="auth-container">
       {/* Form Section */}
       <section className="auth-form-section">
-        <div className="auth-form-container">
+        <div className="auth-form-container text-center">
           <h1 className="text-2xl font-semibold">{t("heading")}</h1>
-          <p className="text-muted-foreground mt-2 text-base">
+          <p className="text-muted-foreground mt-2 text-sm">
             {t("description")}
           </p>
           <div className="my-8">

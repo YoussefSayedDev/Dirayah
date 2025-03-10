@@ -16,7 +16,9 @@ import { SignUpFormSchemaType } from "@/lib/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { PasswordInput } from "../shared/password-input";
+import { Separator } from "../ui/separator";
 export function SignUpForm() {
   const [error, setError] = useState("");
   const [isPending, setIsPending] = useState(false);
@@ -118,11 +120,32 @@ export function SignUpForm() {
           <LoadingButton
             loading={isPending}
             type="submit"
-            className="w-full select-none"
+            className="mt-4 w-full select-none"
           >
             {t("form.signUp")}
             <LogIn className="ml-2 h-5 w-5" />
           </LoadingButton>
+
+          {/* Or sign up with  */}
+          <div className="flex items-center justify-between">
+            <Separator className="my-4 !w-[30%]" />
+            <span className="w-28 text-center text-xs text-gray-500">
+              {t("form.orSignUpWith")}
+            </span>
+            <Separator className="my-4 !w-[30%]" />
+          </div>
+
+          {/* Sign In using Google or Facebook */}
+          <div className="flex items-center justify-between gap-4">
+            <div className="border-gary-200 hover:bg-foreground hover:text-accent flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200">
+              <FaGoogle className="h-4 w-4" />
+              <span className="text-sm font-medium">Google</span>
+            </div>
+            <div className="border-gary-200 hover:bg-foreground hover:text-accent flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200">
+              <FaFacebook className="h-4 w-4" />
+              <span className="text-sm font-medium">Facebook</span>
+            </div>
+          </div>
         </div>
       </form>
     </FormProvider>

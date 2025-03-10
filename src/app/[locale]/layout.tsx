@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/shared/theme-provider";
 import { routing } from "@/i18n/routing";
 import { Directions, Languages, Locale } from "@/lib/types/localization";
 import type { Metadata } from "next";
@@ -35,9 +36,18 @@ export default async function RootLayout({
     (locale as Locale) === Languages.Arabic ? Directions.RTL : Directions.LTR;
 
   return (
-    <html lang={locale} dir={dir}>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <NextIntlClientProvider messages={messages}>
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
       </NextIntlClientProvider>
     </html>
   );

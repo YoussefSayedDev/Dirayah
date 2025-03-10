@@ -1,21 +1,26 @@
 {
   "auth": {
     "signIn": {
-      "heading": "Log In",
-      "description": "Welcome back! Enter your details to log in.",
-      "noAccount": "New here? Sign up",
+      "heading": "Welcome Back to StudyFlow",
+      "description": "Enter your username and password to continue.",
+      "noAccount": "Don't have an account? Sign up",
       "form": {
         "usernameLabel": "Username",
         "usernamePlaceholder": "Your username",
         "passwordLabel": "Password",
         "passwordPlaceholder": "Your password",
-        "signIn": "Log In"
+        "signIn": "Log In",
+        "orSignInWith": "Or sign in with",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember me",
+        "google": "Google",
+        "facebook": "Facebook"
       }
     },
     "signUp": {
-      "heading": "Sign Up",
-      "description": "Create your account to get started.",
-      "hasAccount": "Already with us? Log in",
+      "heading": "Create Your StudyFlow Account",
+      "description": "Sign up to access all features of StudyFlow.",
+      "hasAccount": "Already have an account? Sign in",
       "form": {
         "usernameLabel": "Username",
         "usernamePlaceholder": "Pick a username",
@@ -23,7 +28,10 @@
         "emailPlaceholder": "Your email address",
         "passwordLabel": "Password",
         "passwordPlaceholder": "Create a password",
-        "signUp": "Sign Up"
+        "signUp": "Sign Up",
+        "orSignUpWith": "Or sign up with",
+        "google": "Google",
+        "facebook": "Facebook"
       }
     },
     "forgotPassword": {
