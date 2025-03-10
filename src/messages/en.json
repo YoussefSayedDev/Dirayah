@@ -1,59 +1,64 @@
 {
   "auth": {
     "signIn": {
-      "heading": "Sign in",
-      "description": "Sign in to your account",
-      "noAccount": "Don't have an account?",
+      "heading": "Log In",
+      "description": "Welcome back! Enter your details to log in.",
+      "noAccount": "New here? Sign up",
       "form": {
         "usernameLabel": "Username",
-        "usernamePlaceholder": "Enter your username",
+        "usernamePlaceholder": "Your username",
         "passwordLabel": "Password",
-        "passwordPlaceholder": "Enter your password",
-        "signIn": "Sign in"
+        "passwordPlaceholder": "Your password",
+        "signIn": "Log In"
       }
     },
     "signUp": {
-      "heading": "Sign up",
-      "description": "Sign up for your account",
-      "hasAccount": "Already have an account? Sign in",
+      "heading": "Sign Up",
+      "description": "Create your account to get started.",
+      "hasAccount": "Already with us? Log in",
       "form": {
         "usernameLabel": "Username",
-        "usernamePlaceholder": "Enter your username",
+        "usernamePlaceholder": "Pick a username",
         "emailLabel": "Email",
-        "emailPlaceholder": "Enter your email",
+        "emailPlaceholder": "Your email address",
         "passwordLabel": "Password",
-        "passwordPlaceholder": "Enter your password",
-        "signUp": "Sign up"
+        "passwordPlaceholder": "Create a password",
+        "signUp": "Sign Up"
       }
     },
     "forgotPassword": {
-      "heading": "Forgot password",
-      "description": "Forgot password",
+      "heading": "Forgot Password?",
+      "description": "No worries, we’ll help you reset it.",
       "email": "Email",
-      "submit": "Submit"
+      "submit": "Send Reset Link"
     },
     "resetPassword": {
-      "heading": "Reset password",
-      "description": "Reset password",
-      "password": "Password",
-      "confirmPassword": "Confirm password",
-      "submit": "Submit"
+      "heading": "Reset Your Password",
+      "description": "Set a new password to secure your account.",
+      "password": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "submit": "Save Password"
     },
     "form": {
       "validation": {
         "username": {
-          "min": "Username must be at least 3 characters long",
-          "regex": "Only letters, numbers, and underscores are allowed"
+          "min": "Username needs to be at least 3 characters.",
+          "regex": "Use only letters, numbers, or underscores."
         },
         "email": {
-          "min": "Email is required",
-          "email": "Email is not valid"
+          "min": "Email can’t be empty.",
+          "email": "That doesn’t look like a valid email."
         },
         "password": {
-          "min": "Password must be at least 8 characters long",
-          "regex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+          "min": "Password must be 8+ characters.",
+          "regex": "Include an uppercase, lowercase, number, and special character."
         }
       }
     }
+  },
+  "common": {
+    "searchLanguage": "Find a language",
+    "changingLanguage": "Switching language...",
+    "noLanguagesFound": "No languages match your search"
   }
 }
