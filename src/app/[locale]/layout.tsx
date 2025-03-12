@@ -36,7 +36,7 @@ export default async function RootLayout({
     (locale as Locale) === Languages.Arabic ? Directions.RTL : Directions.LTR;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html lang={locale} dir={dir}>
       <NextIntlClientProvider messages={messages}>
         <body className={`${inter.className} antialiased`}>
           <ThemeProvider

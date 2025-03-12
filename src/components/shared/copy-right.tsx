@@ -1,12 +1,17 @@
 "use client";
+import { useEffect, useState } from "react";
+
 export function CopyRight() {
-  let year = null;
-  // if (typeof window !== "undefined") {
-  //   year = new Date().getFullYear();
-  // }
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Only set the year on the client side
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="container mx-auto mt-auto w-full px-4 py-4">
-      <div className="flex w-full items-center justify-between gap-2 text-sm text-gray-500">
+      <div className="flex w-full flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row sm:justify-between">
         <span>© {year ?? "2025"} StudyFlow</span>
         <div className="flex flex-col items-center gap-1 md:flex-row">
           <span>Developed by</span>
