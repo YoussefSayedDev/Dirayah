@@ -1,7 +1,6 @@
+import { AuthLayoutGrid } from "@/components/auth/auth-layout-grid";
 import { SignInForm } from "@/components/auth/sign-in-form";
-import { CopyRight } from "@/components/shared/copy-right";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function SignInPage() {
@@ -23,20 +22,11 @@ export default async function SignInPage() {
             {t("noAccount")}
           </Link>
         </div>
-        <CopyRight />
       </section>
 
       {/* Image Section */}
       <aside className="auth-image-section">
-        <Image
-          src="/images/photos/sign-in.jpg"
-          alt="Auth Illustration"
-          width={500}
-          height={500}
-          className="h-full w-full object-cover"
-          priority
-          loading="eager"
-        />
+        <AuthLayoutGrid />
       </aside>
     </main>
   );

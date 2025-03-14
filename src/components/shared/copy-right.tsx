@@ -10,10 +10,10 @@ export function CopyRight() {
   }, []);
 
   return (
-    <footer className="container mx-auto mt-auto w-full px-4 py-4">
-      <div className="flex w-full flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row sm:justify-between">
+    <footer className="mt-auto w-full">
+      <div className="flex w-full flex-col items-center gap-2 px-10 text-sm text-gray-500 sm:flex-row sm:justify-between lg:w-1/2">
         <span>© {year ?? "2025"} StudyFlow</span>
-        <div className="flex flex-col items-center gap-1 md:flex-row">
+        <div className="flex flex-row items-center gap-1">
           <span>Developed by</span>
           <a
             href="https://youssef-el-sayed.vercel.app"

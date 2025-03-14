@@ -1,7 +1,7 @@
+import { AuthLayoutGrid } from "@/components/auth/auth-layout-grid";
 import { SignUpForm } from "@/components/auth/sign-up-form";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 
 export default async function SignUpPage() {
   // Localization
@@ -26,15 +26,7 @@ export default async function SignUpPage() {
 
       {/* Image Section */}
       <aside className="auth-image-section">
-        <Image
-          src="/images/photos/sign-up.jpg"
-          alt="Auth Illustration"
-          width={500}
-          height={500}
-          className="h-full w-full object-cover"
-          priority
-          loading="eager"
-        />
+        <AuthLayoutGrid />
       </aside>
     </main>
   );
