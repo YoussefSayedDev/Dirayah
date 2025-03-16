@@ -67,6 +67,9 @@
   "common": {
     "searchLanguage": "Find a language",
     "changingLanguage": "Switching language...",
-    "noLanguagesFound": "No languages match your search"
+    "noLanguagesFound": "No languages match your search",
+    "allRightsReserved": "All rights reserved",
+    "developedBy": "Developed by",
+    "youssefElSayed": "Youssef El Sayed"
   }
 }

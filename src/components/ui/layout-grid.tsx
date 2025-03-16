@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import { useLocale } from "next-intl";
 import React, { JSX, useCallback, useEffect, useRef, useState } from "react";
 
 type Card = {
@@ -17,22 +18,26 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isMounted = useRef(true);
 
+  const locale = useLocale();
+
+  const clearTimers = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  }, []);
+
   const handleClick = useCallback(
     (card: Card) => {
       setLastSelected(selected);
       setSelected(card);
-
-      // Clear any existing timers when user interacts
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
+      clearTimers();
     },
-    [selected],
+    [selected, clearTimers],
   );
 
   const handleOutsideClick = useCallback(() => {
@@ -42,14 +47,17 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
 
   useEffect(() => {
     if (cards.length === 0) return;
-    isMounted.current = true;
 
+    isMounted.current = true;
     let index = 0;
+    const ANIMATION_DURATION = 800;
+    const CYCLE_INTERVAL = 4000;
+    const INITIAL_DELAY = 1000;
 
     const cycleCards = () => {
       if (!isMounted.current) return;
 
-      setSelected(null); // Start fade out
+      setSelected(null);
 
       timeoutRef.current = setTimeout(() => {
         if (!isMounted.current) return;
@@ -58,27 +66,42 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
         setLastSelected(selected);
         setSelected(nextCard);
         index = (index + 1) % cards.length;
-      }, 800);
+      }, ANIMATION_DURATION);
     };
 
     timeoutRef.current = setTimeout(() => {
       if (!isMounted.current) return;
 
       cycleCards();
-      intervalRef.current = setInterval(cycleCards, 4000);
-    }, 1000);
+      intervalRef.current = setInterval(cycleCards, CYCLE_INTERVAL);
+    }, INITIAL_DELAY);
 
     return () => {
       isMounted.current = false;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      clearTimers();
     };
-  }, [cards]);
+  }, [cards, clearTimers]);
+
+  const getCardZIndex = useCallback(
+    (card: Card, index: number) => {
+      if (selected?.id === card.id) return 50;
+      if (lastSelected?.id === card.id) return 45;
+
+      // Create a consistent stacking order based on position
+      return index <= 4 ? 30 - index : 30 + index;
+    },
+    [selected, lastSelected],
+  );
 
   return (
-    <div className="relative -top-12 left-4 mx-auto grid h-[110vh] w-full max-w-7xl grid-cols-1 gap-2 md:grid-cols-3">
+    <div
+      className={cn(
+        "relative -top-12 mx-auto grid h-[110vh] w-full max-w-7xl grid-cols-1 gap-2 md:grid-cols-3",
+        locale === "ar" ? "-left-4" : "left-4",
+      )}
+    >
       {cards.map((card, i) => (
-        <div key={i} className={cn(card.className, "")}>
+        <div key={card.id} className={cn(card.className, "")}>
           <motion.div
             onClick={() => handleClick(card)}
             className={cn(
@@ -91,15 +114,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
                   : "h-full w-full rounded-xl bg-white",
             )}
             style={{
-              // Add a fixed position in the stack for consistent layering
-              zIndex:
-                selected?.id === card.id
-                  ? 50
-                  : lastSelected?.id === card.id
-                    ? 45
-                    : i <= 4
-                      ? 30 - i
-                      : 30 + i, // Use index to ensure consistent stacking order
+              zIndex: getCardZIndex(card, i),
             }}
             layoutId={`card-${card.id}`}
             role="button"
@@ -111,11 +126,22 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
               }
             }}
             transition={{
-              layout: { duration: 0.6, ease: "easeInOut" },
+              layout: {
+                duration: selected?.id === card.id ? 0.6 : 2.5,
+                ease: [0.16, 1, 0.3, 1], // Adjusted ease curve for smoother return
+                type: "spring",
+                stiffness: selected?.id === card.id ? 100 : 60, // Lower stiffness for smoother return
+                damping: selected?.id === card.id ? 20 : 30, // Higher damping for smoother return
+                restDelta: 0.001, // Smaller rest delta for more precise animation
+              },
             }}
           >
             {selected?.id === card.id && <SelectedCard selected={selected} />}
-            <ImageComponent card={card} />
+            <ImageComponent
+              card={card}
+              selected={selected?.id === card.id}
+              lastSelected={lastSelected?.id === card.id}
+            />
           </motion.div>
         </div>
       ))}
@@ -132,7 +158,14 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   );
 };
 
-const ImageComponent = ({ card }: { card: Card }) => {
+const ImageComponent = ({
+  card,
+  selected,
+}: {
+  card: Card;
+  selected?: boolean;
+  lastSelected?: boolean;
+}) => {
   return (
     <motion.img
       layoutId={`image-${card.id}-image`}
@@ -144,7 +177,14 @@ const ImageComponent = ({ card }: { card: Card }) => {
       )}
       alt={`Card ${card.id} thumbnail`}
       transition={{
-        layout: { duration: 0.6, ease: "easeInOut" },
+        layout: {
+          duration: selected ? 0.6 : 2.5,
+          ease: [0.16, 1, 0.3, 1], // Matching ease curve
+          type: "spring",
+          stiffness: selected ? 100 : 60,
+          damping: selected ? 20 : 30,
+          restDelta: 0.001,
+        },
       }}
     />
   );

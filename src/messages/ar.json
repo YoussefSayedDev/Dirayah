@@ -67,6 +67,9 @@
   "common": {
     "searchLanguage": "ابحث عن لغة",
     "changingLanguage": "جارٍ تبديل اللغة...",
-    "noLanguagesFound": "لم يتم العثور على لغات مطابقة"
+    "noLanguagesFound": "لم يتم العثور على لغات مطابقة",
+    "allRightsReserved": "جميع الحقوق محفوظة",
+    "developedBy": "تم تطويره بواسطة",
+    "youssefElSayed": "يوسف السيد"
   }
 }
