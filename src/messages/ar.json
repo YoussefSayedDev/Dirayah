@@ -64,6 +64,245 @@
       }
     }
   },
+  "onboarding": {
+    "main": {
+      "title": "مرحبًا بك في StudyFlow",
+      "description": "لنقم بتخصيص تجربتك. اختر دورك للبدء في عملية إعداد مخصصة.",
+      "roles": {
+        "student": {
+          "title": "طالب",
+          "description": "الوصول إلى الدورات، تتبع تقدمك، والتواصل مع المعلمين"
+        },
+        "teacher": {
+          "title": "معلم",
+          "description": "إنشاء الدورات، إدارة الطلاب، وتتبع الأداء"
+        },
+        "parent": {
+          "title": "ولي امر",
+          "description": "تتبع تقدمك الابناء والتواصل مع المعلمين"
+        }
+      }
+    },
+    "student": {
+      "case0": {
+        "title": "المعلومات الأساسية",
+        "form": {
+          "firstNameLabel": "الاسم الأول",
+          "firstNamePlaceholder": "أدخل اسمك الأول",
+          "lastNameLabel": "الاسم الأخير",
+          "lastNamePlaceholder": "أدخل اسمك الأخير",
+          "dobLabel": "تاريخ الميلاد",
+          "dobPlaceholder": "أدخل تاريخ ميلادك"
+        }
+      },
+      "case1": {
+        "title": "اكتشاف الدورات",
+        "description": "حدد المواد التي تهتم بتعلمها:",
+        "form": {
+          "educationLevelLabel": "المستوى التعليمي",
+          "educationLevelPlaceholder": "اختر مستواك التعليمي",
+          "elmentary": "المدرسة الابتدائية",
+          "middle": "المدرسة الإعدادية",
+          "high": "المدرسة الثانوية",
+          "college": "الجامعة"
+        }
+      },
+      "case2": {
+        "title": "انضم إلى دورتك الأولى",
+        "description": "بناءً على اهتماماتك، إليك بعض الدورات الموصى بها:",
+        "orEnterCode": "أو أدخل رمز الدورة:",
+        "josnCourse": "الانضمام إلى الدورة",
+        "josnCoursePlaceholder": "أدخل رمز الدورة"
+      },
+      "case3": {
+        "title": "مقدمة إلى لوحة التحكم",
+        "accessCourses": "الوصول إلى دوراتك هنا",
+        "trackProgress": "تتبع تقدمك",
+        "connectWithTeachers": "التواصل مع المعلمين",
+        "description": "توفر لك لوحة التحكم المخصصة وصولاً سهلاً إلى جميع دوراتك، وواجباتك، وتتبع تقدمك في مكان واحد."
+      }
+    },
+    "teacher": {
+      "case0": {
+        "title": "المعلومات الأساسية",
+        "form": {
+          "firstNameLabel": "الاسم الأول",
+          "firstNamePlaceholder": "أدخل اسمك الأول",
+          "lastNameLabel": "اسم العائلة",
+          "lastNamePlaceholder": "أدخل اسم عائلتك"
+        },
+        "experience": {
+          "label": "سنوات الخبرة في التدريس",
+          "select": {
+            "placeholder": "اختر عدد سنوات خبرتك",
+            "options": {
+              "0-2": "0-2 سنوات",
+              "3-5": "3-5 سنوات",
+              "6-10": "6-10 سنوات",
+              "10+": "أكثر من 10 سنوات"
+            }
+          }
+        },
+        "subject": {
+          "label": "التخصص الدراسي",
+          "select": {
+            "placeholder": "اختر تخصصك الأساسي",
+            "options": {
+              "math": "الرياضيات",
+              "science": "العلوم",
+              "programming": "البرمجة",
+              "languages": "اللغات",
+              "history": "التاريخ",
+              "arts": "الفنون"
+            }
+          }
+        }
+      },
+      "case1": {
+        "profileSetup": "إعداد الملف الشخصي",
+        "uploadPhoto": "تحميل صورة",
+        "professionalTitle": "المسمى الوظيفي",
+        "professionalPlaceholder": "على سبيل المثال، مدرس الرياضيات، أستاذ العلوم",
+        "bio": "السيرة المهنية",
+        "bioPlaceholder": "أخبر الطلاب عن خلفيتك وفلسفتك التدريسية وخبرتك..."
+      },
+      "case2": {
+        "createCourse": "إنشاء دورتك الأولى",
+        "courseTitle": "عنوان الدورة",
+        "courseTitlePlaceholder": "على سبيل المثال، الدرس الأول في الرياضيات",
+        "category": {
+          "label": "التصنيف",
+          "placeholder": "اختر التصنيف",
+          "options": {
+            "math": "الرياضيات",
+            "science": "العلوم",
+            "programming": "البرمجة",
+            "languages": "اللغات",
+            "history": "التاريخ",
+            "arts": "الفنون",
+            "music": "الموسيقى",
+            "physicalEducation": "التربية البدنية"
+          }
+        },
+        "difficultyLevel": {
+          "label": "مستوى الصعوبة",
+          "placeholder": "اختر المستوى",
+          "options": {
+            "beginner": "مبتدئ",
+            "intermediate": "متوسط",
+            "advanced": "متقدم"
+          }
+        },
+        "courseDescription": "وصف الدورة",
+        "courseDescriptionPlaceholder": "وصف ما سيتعلمه الطلاب في هذه الدورة...",
+        "tabs": {
+          "lessons": {
+            "title": "الدروس",
+            "label": "الدرس الأول",
+            "placeholder": "عنوان الدرس",
+            "addLesson": "إضافة درس"
+          },
+          "materials": {
+            "title": "المواد",
+            "dragAndDropFiles": "اسحب الملفات وأفلتها أو",
+            "browseFiles": "استعرض الملفات"
+          },
+          "assignments": {
+            "title": "الواجبات",
+            "label": "الواجب الأول",
+            "placeholder": "عنوان الواجب",
+            "addAssignment": "إضافة واجب"
+          }
+        }
+      },
+      "case3": {
+        "inviteStudents": "دعوة الطلاب",
+        "shareLink": "شارك رمز الفصل هذا مع طلابك",
+        "copyCode": "نسخ الرمز",
+        "inviteLink": "دعوة الطلاب عبر البريد الإلكتروني",
+        "sendInvites": "إرسال الدعوات",
+        "inviteLinkPlaceholder": "أدخل عناوين البريد الإلكتروني مفصولة ( , ) بينها",
+        "orShareLink": "أو شارك رابط الدعوة هذا:",
+        "copyLink": "نسخ الرابط"
+      },
+      "case4": {
+        "dashboardTour": "جولة في لوحة التحكم",
+        "manageCourses": "إدارة دوراتك",
+        "trackStudentProgress": "تتبع تقدم الطلاب",
+        "createAndGradeAssignments": "إنشاء وتصحيح الواجبات",
+        "courseManagement": "إدارة الدورات",
+        "courseManagementDescription": "إنشاء وتنظيم محتوى الدورات",
+        "studentProgressTracking": "تتبع تقدم الطلاب",
+        "studentProgressTrackingDescription": "مراقبة الأداء والتفاعل",
+        "createAndOrganizeCourseContent": "إنشاء وتنظيم محتوى الدورات",
+        "studentAnalytics": "تحليلات الطلاب",
+        "monitorPerformanceAndEngagement": "مراقبة الأداء والتفاعل",
+        "communicationTools": "أدوات التواصل",
+        "communicationToolsDescription": "التواصل مع الطلاب وأولياء الأمور"
+      }
+    },
+    "parent": {
+      "case0": {
+        "title": "المعلومات الأساسية",
+        "form": {
+          "firstNameLabel": "الاسم الأول",
+          "firstNamePlaceholder": "أدخل اسمك الأول",
+          "lastNameLabel": "اسم العائلة",
+          "lastNamePlaceholder": "أدخل اسم عائلتك"
+        },
+        "relation": {
+          "label": "العلاقة بالطالب",
+          "select": {
+            "placeholder": "اختر علاقتك بالطالب",
+            "options": {
+              "parent": "ولي أمر",
+              "guardian": "الوصي القانوني",
+              "grandparent": "الجد / الجدة",
+              "other": "أخرى"
+            }
+          }
+        },
+        "numberOfChildren": {
+          "label": "عدد الأطفال"
+        }
+      },
+      "case1": {
+        "linkChild": "ربط حساب الطفل",
+        "description": "قم بربط حسابك بحساب طفلك لمتابعة تقدمه والتواصل مع المعلمين.",
+        "card": {
+          "usernameLabel": "اسم المستخدم للطفل",
+          "usernamePlaceholder": "أدخل اسم المستخدم لطفلك",
+          "or": "أو",
+          "emailLabel": "البريد الإلكتروني للطفل",
+          "emailPlaceholder": "أدخل البريد الإلكتروني لطفلك",
+          "linkAccount": "ربط الحساب"
+        },
+        "donotHaveChild": "لا تملك معلومات طفلك؟ يمكنك أيضًا إرسال رابط دعوة:",
+        "copyLink": "نسخ الرابط"
+      },
+      "case2": {
+        "dashboardTour": "جولة في لوحة التحكم",
+        "trackChildProgress": "متابعة تقدم الطفل",
+        "viewUpcomingAssignments": "عرض الواجبات القادمة",
+        "messageTeachersDirectly": "مراسلة المعلمين مباشرة",
+        "progressTracking": "تتبع التقدم",
+        "monitorGradesAndCompletion": "مراقبة الدرجات والإنجازات",
+        "assignmentCalendar": "تقويم الواجبات",
+        "assignCalendarDescription": "البقاء على اطلاع على مواعيد الاستحقاق",
+        "teacherCommunication": "التواصل مع المعلمين",
+        "teacherCommunicationDescription": "المراسلة المباشرة مع المعلمين"
+      }
+    },
+    "common": {
+      "skipOnboarding": "تخطي التوجيه",
+      "next": "التالي",
+      "back": "السابق",
+      "continue": "المتابعة",
+      "completed": "تم",
+      "step": "الخطوة {step}",
+      "of": "من {total}"
+    }
+  },
   "common": {
     "searchLanguage": "ابحث عن لغة",
     "changingLanguage": "جارٍ تبديل اللغة...",

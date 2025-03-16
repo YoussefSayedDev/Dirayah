@@ -64,6 +64,245 @@
       }
     }
   },
+  "onboarding": {
+    "main": {
+      "title": "Welcome to StudyFlow",
+      "description": "Let's personalize your experience. Select your role to get started with a customized onboarding process.",
+      "roles": {
+        "student": {
+          "title": "Student",
+          "description": "Access courses, track progress, and connect with teachers"
+        },
+        "teacher": {
+          "title": "Teacher",
+          "description": "Create courses, manage students, and track performance"
+        },
+        "parent": {
+          "title": "Parent",
+          "description": "Monitor your child's progress and communicate with teachers"
+        }
+      }
+    },
+    "student": {
+      "case0": {
+        "title": "Basic Information",
+        "form": {
+          "firstNameLabel": "First Name",
+          "firstNamePlaceholder": "Enter your first name",
+          "lastNameLabel": "Last Name",
+          "lastNamePlaceholder": "Enter your last name",
+          "dobLabel": "Date of Birth",
+          "dobPlaceholder": "Enter your date of birth"
+        }
+      },
+      "case1": {
+        "title": "Course Discovery",
+        "description": "Select subjects you're interested in learning:",
+        "form": {
+          "educationLevelLabel": "Education Level",
+          "educationLevelPlaceholder": "Select your education level",
+          "elmentary": "Elementary School",
+          "middle": "Middle School",
+          "high": "High School",
+          "college": "College/University"
+        }
+      },
+      "case2": {
+        "title": "Join Your First Course",
+        "description": "Based on your interests, here are some recommended courses:",
+        "orEnterCode": "Or enter a course code:",
+        "josnCourse": "Join Course",
+        "josnCoursePlaceholder": "Enter course code"
+      },
+      "case3": {
+        "title": "Dashboard Introduction",
+        "accessCourses": "Access your courses here",
+        "trackProgress": "Track your progress",
+        "connectWithTeachers": "Connect with teachers",
+        "description": "Your personalized dashboard gives you easy access to all your courses, assignments, and progress tracking in one place."
+      }
+    },
+    "teacher": {
+      "case0": {
+        "title": "Basic Information",
+        "form": {
+          "firstNameLabel": "First Name",
+          "firstNamePlaceholder": "Enter your first name",
+          "lastNameLabel": "Last Name",
+          "lastNamePlaceholder": "Enter your last name"
+        },
+        "experience": {
+          "label": "Teaching Experience (Years)",
+          "select": {
+            "placeholder": "Select your experience",
+            "options": {
+              "0-2": "0-2 years",
+              "3-5": "3-5 years",
+              "6-10": "6-10 years",
+              "10+": "10+ years"
+            }
+          }
+        },
+        "subject": {
+          "label": "Subject Expertise",
+          "select": {
+            "placeholder": "Select your primary subject",
+            "options": {
+              "math": "Mathematics",
+              "science": "Science",
+              "programming": "Programming",
+              "languages": "Languages",
+              "history": "History",
+              "arts": "Arts"
+            }
+          }
+        }
+      },
+      "case1": {
+        "profileSetup": "Profile Setup",
+        "uploadPhoto": "Upload Photo",
+        "professionalTitle": "Professional Title",
+        "professionalPlaceholder": "e.g. Mathematics Teacher, Science Professor",
+        "bio": "Professional Bio",
+        "bioPlaceholder": "Tell students about your background, teaching philosophy, and expertise..."
+      },
+      "case2": {
+        "createCourse": "Create Your First Course",
+        "courseTitle": "Course Title",
+        "courseTitlePlaceholder": "e.g. Introduction to Algebra",
+        "category": {
+          "label": "Category",
+          "placeholder": "Select category",
+          "options": {
+            "math": "Mathematics",
+            "science": "Science",
+            "programming": "Programming",
+            "languages": "Languages",
+            "history": "History",
+            "arts": "Arts",
+            "music": "Music",
+            "physicalEducation": "Physical Education"
+          }
+        },
+        "difficultyLevel": {
+          "label": "Difficulty Level",
+          "placeholder": "Select level",
+          "options": {
+            "beginner": "Beginner",
+            "intermediate": "Intermediate",
+            "advanced": "Advanced"
+          }
+        },
+        "courseDescription": "Course Description",
+        "courseDescriptionPlaceholder": "Describe what students will learn in this course...",
+        "tabs": {
+          "lessons": {
+            "title": "Lessons",
+            "label": "First Lesson",
+            "placeholder": "Lesson title",
+            "addLesson": "Add Lesson"
+          },
+          "materials": {
+            "title": "Materials",
+            "dragAndDropFiles": "Drag and drop files or",
+            "browseFiles": "Browse Files"
+          },
+          "assignments": {
+            "title": "Assignments",
+            "label": "First Assignment",
+            "placeholder": "Assignment title",
+            "addAssignment": "Add Assignment"
+          }
+        }
+      },
+      "case3": {
+        "inviteStudents": "Invite Students",
+        "shareLink": "Share this class code with your students",
+        "copyCode": "Copy Code",
+        "inviteLink": "Invite Students by Email",
+        "inviteLinkPlaceholder": "Enter email addresses separated by commas (,)...",
+        "sendInvites": "Send Invitations",
+        "orShareLink": "Or share this invitation link:",
+        "copyLink": "Copy Link"
+      },
+      "case4": {
+        "dashboardTour": "Dashboard Tour",
+        "manageCourses": "Manage your courses",
+        "trackStudentProgress": "Track student progress",
+        "createAndGradeAssignments": "Create and grade assignments",
+        "courseManagement": "Course Management",
+        "courseManagementDescription": "Create and organize your course content",
+        "studentProgressTracking": "Student Progress Tracking",
+        "studentProgressTrackingDescription": "Monitor performance and engagement",
+        "createAndOrganizeCourseContent": "Create and organize your course content",
+        "studentAnalytics": "Student Analytics",
+        "monitorPerformanceAndEngagement": "Monitor performance and engagement",
+        "communicationTools": "Communication Tools",
+        "communicationToolsDescription": "Connect with students and parents"
+      }
+    },
+    "parent": {
+      "case0": {
+        "title": "Basic Information",
+        "form": {
+          "firstNameLabel": "First Name",
+          "firstNamePlaceholder": "Enter your first name",
+          "lastNameLabel": "Last Name",
+          "lastNamePlaceholder": "Enter your last name"
+        },
+        "relation": {
+          "label": "Relation to Student",
+          "select": {
+            "placeholder": "Select your relation",
+            "options": {
+              "parent": "Parent",
+              "guardian": "Legal Guardian",
+              "grandparent": "Grandparent",
+              "other": "Other"
+            }
+          }
+        },
+        "numberOfChildren": {
+          "label": "Number of Children"
+        }
+      },
+      "case1": {
+        "linkChild": "Link Child's Account",
+        "description": "Connect your account to your child's to monitor theirprogress and communicate with teachers.",
+        "card": {
+          "usernameLabel": "Child's Username",
+          "usernamePlaceholder": "Enter your child's username",
+          "or": "Or",
+          "emailLabel": "Child's Email",
+          "emailPlaceholder": "Enter your child's email",
+          "linkAccount": "Link Account"
+        },
+        "donotHaveChild": "Don't have your child's information? You can also send them an invitation link:",
+        "copyLink": "Copy Link"
+      },
+      "case2": {
+        "dashboardTour": "Dashboard Tour",
+        "trackChildProgress": "Track child's progress",
+        "viewUpcomingAssignments": "View upcoming assignments",
+        "messageTeachersDirectly": "Message teachers directly",
+        "progressTracking": "Progress Tracking",
+        "monitorGradesAndCompletion": "Monitor grades and completion",
+        "assignmentCalendar": "Assignment Calendar",
+        "assignCalendarDescription": "Stay on top of due dates",
+        "teacherCommunication": "Teacher Communication",
+        "teacherCommunicationDescription": "Direct messaging with educators"
+      }
+    },
+    "common": {
+      "skipOnboarding": "Skip onboarding",
+      "next": "Next",
+      "back": "Back",
+      "continue": "Continue",
+      "completed": "Completed",
+      "step": "Step {step}",
+      "of": "of {total}"
+    }
+  },
   "common": {
     "searchLanguage": "Find a language",
     "changingLanguage": "Switching language...",
