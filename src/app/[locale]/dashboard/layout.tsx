@@ -8,7 +8,7 @@ export default async function DashboardLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
   const role = "student";
