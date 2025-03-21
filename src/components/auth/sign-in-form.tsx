@@ -22,8 +22,8 @@ import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 
 export function SignInForm() {
-  const [error, setError] = useState("");
-  const [isPending, setIsPending] = useState(false);
+  // const [error, setError] = useState("");
+  // const [isPending, setIsPending] = useState(false);
 
   // Localization
   const t = useTranslations("auth.signIn");
@@ -50,11 +50,11 @@ export function SignInForm() {
       >
         {/* Errors go here */}
         <div className="flex flex-col gap-y-2">
-          {error && (
+{/*           {error && (
             <p className="text-center text-sm text-red-500" role="alert">
               {error}
             </p>
-          )}
+          )} */}
           {/* Username Field */}
           <FormField
             control={form.control}
@@ -117,7 +117,7 @@ export function SignInForm() {
 
           {/* Submit Button */}
           <LoadingButton
-            loading={isPending}
+            loading={false}
             type="submit"
             className="w-full select-none"
           >
