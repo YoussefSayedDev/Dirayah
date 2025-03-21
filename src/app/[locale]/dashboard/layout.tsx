@@ -5,14 +5,18 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 
 export default async function DashboardLayout({
-  children
-}: {
-  children: ReactNode;
-}) {
+  children,
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}>) {
   const role = "student";
   const first_name = "Youssef";
   const last_name = "El Sayed";
 
+  const { locale } = await params;
+  
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full overflow-hidden">
