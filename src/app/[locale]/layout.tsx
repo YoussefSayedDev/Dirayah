@@ -37,11 +37,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <NextIntlClientProvider messages={messages}>
-        <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased`}>
+        <NextIntlClientProvider messages={messages}>
           <ThemeProvider>{children}</ThemeProvider>
-        </body>
-      </NextIntlClientProvider>
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

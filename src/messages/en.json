@@ -303,6 +303,45 @@
       "of": "of {total}"
     }
   },
+  "header": {
+    "welcome": "Welcome",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "student": "Student",
+    "teacher": "Teacher",
+    "parent": "Parent",
+    "admin": "Admin",
+    "profile": "Profile",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "dashboardLanguageSwitcher": {
+      "switchLanguage": "Switch language",
+      "english": "English",
+      "arabic": "Arabic"
+    }
+  },
+  "sidebar": {
+    "lms": "LMS",
+    "home": "Home",
+    "messages": "Messages",
+    "settings": "Settings",
+    "courses": "Courses",
+    "assignments": "Assignments",
+    "students": "Students",
+    "student": "Student",
+    "exams": "Exams",
+    "children": "Children",
+    "progress": "Progress",
+    "users": "Users",
+    "teachers": "Teachers",
+    "dashboard": "Dashboard",
+    "profile": "Profile"
+  },
+  "navbar": {
+    "home": "Home",
+    "dashboard": "Dashboard"
+  },
   "common": {
     "searchLanguage": "Find a language",
     "changingLanguage": "Switching language...",

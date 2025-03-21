@@ -303,6 +303,45 @@
       "of": "من {total}"
     }
   },
+  "header": {
+    "welcome": "مرحبا",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام",
+    "student": "طالب",
+    "teacher": "معلم",
+    "parent": "ولي امر",
+    "admin": "مدير",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "signOut": "تسجيل الخروج",
+    "dashboardLanguageSwitcher": {
+      "switchLanguage": "تغير اللغة",
+      "english": "اللغة الانجليزية",
+      "arabic": "اللغة العربية"
+    }
+  },
+  "sidebar": {
+    "lms": "نظام إدارة التعلم",
+    "home": "الصفحة الرئيسية",
+    "messages": "الرسائل",
+    "settings": "الإعدادات",
+    "courses": "الدورات",
+    "assignments": "المهام",
+    "students": "الطلاب",
+    "student": "طالب",
+    "exams": "الامتحانات",
+    "children": "الأطفال",
+    "progress": "التقدم",
+    "users": "المستخدمون",
+    "teachers": "المعلمون",
+    "dashboard": "لوحة التحكم",
+    "profile": "الملف الشخصي"
+  },
+  "navbar": {
+    "home": "الصفحة الرئيسية",
+    "dashboard": "لوحة التحكم"
+  },
   "common": {
     "searchLanguage": "ابحث عن لغة",
     "changingLanguage": "جارٍ تبديل اللغة...",
