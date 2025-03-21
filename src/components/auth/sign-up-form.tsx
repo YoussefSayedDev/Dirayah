@@ -15,13 +15,13 @@ import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
 import { SignUpFormSchemaType } from "@/lib/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+// import { useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { PasswordInput } from "../shared/password-input";
 import { Separator } from "../ui/separator";
 export function SignUpForm() {
-  const [error, setError] = useState("");
-  const [isPending, setIsPending] = useState(false);
+  // const [error, setError] = useState("");
+  // const [isPending, setIsPending] = useState(false);
 
   // Localization
   const t = useTranslations("auth.signUp");
@@ -118,7 +118,7 @@ export function SignUpForm() {
 
           {/* Submit Button */}
           <LoadingButton
-            loading={isPending}
+            loading={false}
             type="submit"
             className="mt-4 w-full select-none"
           >
