@@ -48,11 +48,11 @@ export function SignUpForm() {
       >
         {/* Errors go here */}
         <div className="flex flex-col gap-y-2">
-          {error && (
+{/*           {error && (
             <p className="text-center text-sm text-red-500" role="alert">
               {error}
             </p>
-          )}
+          )} */}
 
           {/* Username Field */}
           <FormField
