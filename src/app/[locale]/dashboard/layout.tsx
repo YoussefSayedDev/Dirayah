@@ -5,11 +5,9 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 
 export default async function DashboardLayout({
-  children,
-  params: { locale },
+  children
 }: {
   children: ReactNode;
-  params: { locale: string };
 }) {
   const role = "student";
   const first_name = "Youssef";
