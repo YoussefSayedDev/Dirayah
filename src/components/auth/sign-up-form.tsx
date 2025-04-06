@@ -23,7 +23,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-
 export function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -193,7 +192,6 @@ export function SignUpForm() {
               </FormItem>
             )}
           />
-
           {/* Submit Button */}
           <LoadingButton
             loading={isLoading}

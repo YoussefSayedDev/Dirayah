@@ -25,7 +25,6 @@ import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { toast } from "sonner";
-
 export function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -140,7 +139,6 @@ export function SignInForm() {
               {error}
             </p>
           )} */}
-          {/* Username Field */}
           <FormField
             control={form.control}
             name="username"
