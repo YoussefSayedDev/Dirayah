@@ -33,19 +33,14 @@ export async function middleware(req: NextRequest) {
     pathnameWithoutLocale.startsWith("/forgot-password") ||
     pathnameWithoutLocale.startsWith("/reset-password");
 
-  const isOnboardingRoute = pathnameWithoutLocale.startsWith("/onboarding");
-
   const isDashboardRoute = pathnameWithoutLocale.startsWith("/dashboard");
 
   // Redirect authenticated users away from auth routes
   if (isAuthRoute && session) {
     const locale = pathname.split("/")[1];
 
-    // If onboarding is not completed, redirect to onbaording
-    if (!session.user?.onboardingCompleted) {
-      return NextResponse.redirect(new URL(`/${locale}/onboarding`, req.url));
-    }
-
+    // Simple redirect to onboarding or dashboard
+    // Let the onboarding/dashboard pages handle detailed user state checks
     return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
   }
 
@@ -55,66 +50,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}/sign-in`, req.url));
   }
 
-  // Handle onboarding flow
-  if (session) {
-    // If onboarding is completed but user is on onboarding route, redirect to dashboard
-    if (session.user?.onboardingCompleted && isOnboardingRoute) {
-      const locale = pathname.split("/")[1];
-      return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
-    }
-
-    // If onboarding is not completed but user is on dashboard, redirect to onboarding
-    if (!session.user?.onboardingCompleted && isDashboardRoute) {
-      const locale = pathname.split("/")[1];
-      return NextResponse.redirect(new URL(`/${locale}/onboarding`, req.url));
-    }
-
-    // Role-based access control for dashboard routes
-    if (isDashboardRoute) {
-      const role = session.user.role;
-
-      // Admin-only routes
-      if (pathnameWithoutLocale.startsWith("/admin") && role !== "admin") {
-        const locale = pathname.split("/")[1];
-        return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
-      }
-
-      // Teacher-only routes
-      if (
-        pathnameWithoutLocale.includes("/teacher") &&
-        role !== "teacher" &&
-        role !== "admin"
-      ) {
-        const locale = pathname.split("/")[1];
-        return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
-      }
-    }
-  }
-
-  return intlMiddleware(req);
-
-  // // check if the current path is a public route (conssidering locale prefixes)
-  // const isPublicRoute = publicRoutes.some(
-  //   (route) => pathname.endsWith(route) || pathname.includes(`${route}/`),
-  // );
-
-  // // Properly verify the token if it exists
-  // const isValidToken = true; // TODO: Change this when implementing authentication
-
-  // // Handle authentication logic
-  // if (!isValidToken && !isPublicRoute) {
-  //   // User is not authenticated and trying to access a protected route
-  //   // Redirect to sign-in page while preserving the locale
-  //   const locale = pathname.split("/")[1];
-  //   const signInUrl = new URL(`/${locale}/sign-in`, req.url);
-
-  //   // Add return URL as a query parameter for redirect after sign-in
-  //   signInUrl.searchParams.set("returnUrl", pathname);
-
-  //   return NextResponse.redirect(signInUrl);
-  // }
-
-  // For all other cases, apply the internationalization middleware
   return intlMiddleware(req);
 }
 

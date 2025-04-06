@@ -1,24 +1,24 @@
 export const subjects = [
   {
-    id: 1,
+    id: "course1",
     title: "Introduction to Algebra",
     category: "Mathematics",
     level: "Beginner",
   },
   {
-    id: 2,
+    id: "course2",
     title: "Web Development Fundamentals",
     category: "Programming",
     level: "Beginner",
   },
   {
-    id: 3,
+    id: "course3",
     title: "Biology Essentials",
     category: "Science",
     level: "Intermediate",
   },
   {
-    id: 4,
+    id: "course4",
     title: "World History: Ancient Civilizations",
     category: "History",
     level: "Beginner",

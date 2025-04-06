@@ -84,6 +84,32 @@
       "redirectingToDashboard": "You'll be redirected to your dashboard in a a moment...",
       "welcomeToOnboarding": "Welcome to the Onboarding Process",
       "completeProfileInfo": "Let's complete your profile information.",
+      "page": {
+        "welcomeToOnboarding": "Welcome to the Onboarding Process",
+        "completeProfileInfo": "Let's complete your profile information to personalize your experience.",
+        "roles": {
+          "title": "What to Expect",
+          "options": {
+            "student": {
+              "title": "Choose Your Role",
+              "description": "Select whether you are a student, parent, or teacher to customize your experience."
+            },
+            "teacher": {
+              "title": "Complete Your Profile",
+              "description": "Provide information about yourself to help us personalize your experience."
+            },
+            "parent": {
+              "title": "Set Your Preferences",
+              "description": "Tell us about your interests, subjects, or teaching areas to customize your dashboard."
+            },
+            "admin": {
+              "title": "Start Your Journey",
+              "description": "Begin using Dirayah with a fully personalized experience tailored to your needs."
+            }
+          }
+        },
+        "continue": "Continue to Role Selection"
+      },
       "roles": {
         "student": {
           "title": "Student",
@@ -96,7 +122,39 @@
         "parent": {
           "title": "Parent",
           "description": "Monitor your child's progress and communicate with teachers"
+        },
+        "admin": {
+          "title": "Admin",
+          "description": "Manage users, courses, and more"
         }
+      }
+    },
+    "role": {
+      "loading": "Loading...",
+      "title": "Role Selection",
+      "description": "Let's personalize your experience. Select your role to get started with a customized onboarding process.",
+      "options": {
+        "student": {
+          "title": "Student",
+          "description": "Access courses, track progress, and connect with teachers"
+        },
+        "teacher": {
+          "title": "Teacher",
+          "description": "Create courses, manage students, and track performance"
+        },
+        "parent": {
+          "title": "Parent",
+          "description": "Monitor your child's progress and communicate with teachers"
+        },
+        "admin": {
+          "title": "Admin",
+          "description": "Manage users, courses, and more"
+        }
+      },
+      "errors": {
+        "initFailedTitle": "Initialization Failed",
+        "tryRefreshing": "Please try refreshing the page.",
+        "userStore": "Failed to initialize user data"
       }
     },
     "student": {
@@ -120,7 +178,11 @@
           "elmentary": "Elementary School",
           "middle": "Middle School",
           "high": "High School",
-          "college": "College/University"
+          "college": "College/University",
+          "schoolLabel": "School Name",
+          "schoolPlaceholder": "Enter your school name",
+          "gradeLabel": "Current Grade",
+          "gradePlaceholder": "Enter your current grade"
         }
       },
       "case2": {
@@ -136,6 +198,18 @@
         "trackProgress": "Track your progress",
         "connectWithTeachers": "Connect with teachers",
         "description": "Your personalized dashboard gives you easy access to all your courses, assignments, and progress tracking in one place."
+      },
+      "validation": {
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "interestsRequired": "Please select at least one subject of interest",
+        "educationLevelRequired": "Please select your education level",
+        "courseSelectionRequired": "Please select a course or enter a course code"
+      },
+      "navigation": {
+        "next": "Next",
+        "previous": "Previous",
+        "complete": "Complete Setup"
       }
     },
     "teacher": {

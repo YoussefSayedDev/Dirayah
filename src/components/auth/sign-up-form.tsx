@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { PasswordInput } from "@/components/shared/password-input";
 import { Separator } from "@/components/ui/separator";
 import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
-import { useAuth } from "@/providers/auth-provider";
+import { authService } from "@/lib/auth/authService";
 import { LocalizedMessage } from "@/types/localization";
 import { SignUpFormSchemaType } from "@/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +23,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-
 export function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -34,7 +33,6 @@ export function SignUpForm() {
   const locale = useLocale();
   const { SignUpFormSchema } = useCreateAuthSchema();
   const router = useRouter();
-  const { signUp, signInWithGoogle, signInWithFacebook } = useAuth();
 
   const form = useForm<SignUpFormSchemaType>({
     resolver: zodResolver(SignUpFormSchema),
@@ -49,12 +47,11 @@ export function SignUpForm() {
     setIsLoading(true);
 
     try {
-      const { error } = await signUp(data.email, data.password, data.username);
-
-      console.log({
-        error,
-      });
-
+      const { error } = await authService.signUp(
+        data.email,
+        data.password,
+        data.username,
+      );
       if (error) {
         const errorMessage = error.isLocalized
           ? (error.message as LocalizedMessage)[
@@ -62,29 +59,20 @@ export function SignUpForm() {
             ]
           : (error.message as string);
 
-        toast(t("failed"), {
+        toast.error(t("failed"), {
           description: errorMessage,
-          style: {
-            color: "red",
-          },
         });
         return;
       }
 
-      toast(t("success"), {
+      toast.success(t("success"), {
         description: t("redirectingToOnboarding"),
       });
 
-      // Give NextAuth a moment to set up the session
-      setTimeout(() => {
-        router.push("/onboarding");
-      }, 2000);
+      router.push("/onboarding");
     } catch {
-      toast(t("failed"), {
+      toast.error(t("failed"), {
         description: t("somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsLoading(false);
@@ -94,13 +82,10 @@ export function SignUpForm() {
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     try {
-      await signInWithGoogle();
+      await authService.signInWithGoogle();
     } catch {
-      toast(t("loginFailed"), {
+      toast.error(t("loginFailed"), {
         description: t("somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsGoogleLoading(false);
@@ -110,13 +95,10 @@ export function SignUpForm() {
   const handleFacebookSignIn = async () => {
     setIsFacebookLoading(true);
     try {
-      await signInWithFacebook();
+      await authService.signInWithFacebook();
     } catch {
-      toast(t("loginFailed"), {
+      toast.error(t("loginFailed"), {
         description: t("somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsFacebookLoading(false);
@@ -130,7 +112,6 @@ export function SignUpForm() {
         className="space-y-3"
         aria-live="polite"
       >
-        {/* Errors go here */}
         <div className="flex flex-col gap-y-2">
           {/* Username Field */}
           <FormField
@@ -193,7 +174,6 @@ export function SignUpForm() {
               </FormItem>
             )}
           />
-
           {/* Submit Button */}
           <LoadingButton
             loading={isLoading}

@@ -12,8 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
-// import { executeAction } from "@/lib/executeAction";
-import { useAuth } from "@/providers/auth-provider";
+import { authService } from "@/lib/auth/authService";
 import { LocalizedMessage } from "@/types/localization";
 import { SignInFormSchemaType } from "@/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +24,6 @@ import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { toast } from "sonner";
-
 export function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
@@ -36,7 +34,6 @@ export function SignInForm() {
   const locale = useLocale();
   const { SignInFormSchema } = useCreateAuthSchema();
   const router = useRouter();
-  const { signIn, signInWithGoogle, signInWithFacebook } = useAuth();
 
   const form = useForm<SignInFormSchemaType>({
     resolver: zodResolver(SignInFormSchema),
@@ -50,14 +47,7 @@ export function SignInForm() {
     setIsLoading(true);
 
     try {
-      const { error } = await signIn(data.username, data.password);
-
-      // await executeAction({
-      //   actionFn: async () => {
-      //     await signIn
-      //   }
-      // })
-
+      const { error } = await authService.signIn(data.username, data.password);
       if (error) {
         const errorMessage = error.isLocalized
           ? (error.message as LocalizedMessage)[
@@ -65,29 +55,20 @@ export function SignInForm() {
             ]
           : (error.message as string);
 
-        toast(t("common.failed"), {
+        toast.error(t("common.failed"), {
           description: errorMessage,
-          style: {
-            color: "red",
-          },
         });
         return;
       }
 
-      toast(t("common.success"), {
+      toast.success(t("common.success"), {
         description: t("common.redirectingToDashboard"),
       });
 
-      // Given NextAuth a moment to set up the session
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2000);
+      router.push("/dashboard");
     } catch {
-      toast(t("common.failed"), {
+      toast.error(t("common.failed"), {
         description: t("common.somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsLoading(false);
@@ -97,13 +78,10 @@ export function SignInForm() {
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     try {
-      await signInWithGoogle();
+      await authService.signInWithGoogle();
     } catch {
-      toast(t("common.loginFailed"), {
+      toast.error(t("common.loginFailed"), {
         description: t("common.somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsGoogleLoading(false);
@@ -113,13 +91,10 @@ export function SignInForm() {
   const handleFacebookSignIn = async () => {
     setIsFacebookLoading(true);
     try {
-      await signInWithFacebook();
+      await authService.signInWithFacebook();
     } catch {
-      toast(t("common.loginFailed"), {
+      toast.error(t("common.loginFailed"), {
         description: t("common.somethingWentWrong"),
-        style: {
-          color: "red",
-        },
       });
     } finally {
       setIsFacebookLoading(false);
@@ -133,14 +108,7 @@ export function SignInForm() {
         className="space-y-3"
         aria-live="polite"
       >
-        {/* Errors go here */}
         <div className="flex flex-col gap-y-2">
-          {/* {error && (
-            <p className="text-center text-sm text-red-500" role="alert">
-              {error}
-            </p>
-          )} */}
-          {/* Username Field */}
           <FormField
             control={form.control}
             name="username"
