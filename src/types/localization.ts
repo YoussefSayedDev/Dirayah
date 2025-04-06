@@ -9,3 +9,8 @@ export enum Directions {
   LTR = "ltr",
   RTL = "rtl",
 }
+
+export type LocalizedMessage = {
+  en: string;
+  ar: string;
+};

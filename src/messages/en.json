@@ -1,7 +1,7 @@
 {
   "auth": {
     "signIn": {
-      "heading": "Welcome Back to StudyFlow",
+      "heading": "Welcome Back to Dirayah",
       "description": "Enter your username and password to continue.",
       "noAccount": "Don't have an account? Sign up",
       "form": {
@@ -15,11 +15,18 @@
         "rememberMe": "Remember me",
         "google": "Google",
         "facebook": "Facebook"
+      },
+      "common": {
+        "failed": "Failed",
+        "success": "Sign in successful",
+        "somethingWentWrong": "Something went wrong",
+        "loginFailed": "Sign in failed",
+        "redirectingToDashboard": "You'll be redirected to your dashboard in a a moment..."
       }
     },
     "signUp": {
-      "heading": "Create Your StudyFlow Account",
-      "description": "Sign up to access all features of StudyFlow.",
+      "heading": "Create Your Dirayah Account",
+      "description": "Sign up to access all features of Dirayah.",
       "hasAccount": "Already have an account? Sign in",
       "form": {
         "usernameLabel": "Username",
@@ -32,7 +39,12 @@
         "orSignUpWith": "Or sign up with",
         "google": "Google",
         "facebook": "Facebook"
-      }
+      },
+      "failed": "Sign up failed",
+      "success": "Sign up successful",
+      "redirectingToOnboarding": "Redirecting to onboarding...",
+      "loginFailed": "Login failed",
+      "somethingWentWrong": "Something went wrong"
     },
     "forgotPassword": {
       "heading": "Forgot Password?",
@@ -64,10 +76,14 @@
       }
     }
   },
-  "onboarding": {
+  "Onboarding": {
     "main": {
-      "title": "Welcome to StudyFlow",
+      "title": "Welcome to Dirayah",
       "description": "Let's personalize your experience. Select your role to get started with a customized onboarding process.",
+      "onboardingComplete": "Onboarding complete!",
+      "redirectingToDashboard": "You'll be redirected to your dashboard in a a moment...",
+      "welcomeToOnboarding": "Welcome to the Onboarding Process",
+      "completeProfileInfo": "Let's complete your profile information.",
       "roles": {
         "student": {
           "title": "Student",
@@ -300,7 +316,13 @@
       "continue": "Continue",
       "completed": "Completed",
       "step": "Step {step}",
-      "of": "of {total}"
+      "of": "of {total}",
+      "error": "Error",
+      "success": "Success",
+      "loading": "Loading...",
+      "pleaseSelectRole": "Please select a role",
+      "pleaseEnterName": "Please enter your name",
+      "somethingWentWrong": "Something went wrong, Please try again."
     }
   },
   "header": {

@@ -1,18 +1,21 @@
-import { ThemeProvider } from "@/components/shared/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
-import { Directions, Languages, Locale } from "@/lib/types/localization";
+import { AuthProvider } from "@/providers/auth-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
+import { Directions, Languages, Locale } from "@/types/localization";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import "./globals.css";
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "StudyFlow",
-    template: "%s - StudyFlow",
+    default: "Dirayah",
+    template: "%s - Dirayah",
   },
   description: "A learning management system for students",
 };
@@ -37,10 +40,17 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider>{children}</ThemeProvider>
-        </NextIntlClientProvider>
+      <body className={`antialiased`}>
+        <SessionProvider>
+          <NextIntlClientProvider messages={messages}>
+            <AuthProvider>
+              <ThemeProvider>
+                <main>{children}</main>
+                <Toaster />
+              </ThemeProvider>
+            </AuthProvider>
+          </NextIntlClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );

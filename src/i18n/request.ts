@@ -1,4 +1,4 @@
-import { Locale } from "@/lib/types/localization";
+import { Locale } from "@/types/localization";
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
 

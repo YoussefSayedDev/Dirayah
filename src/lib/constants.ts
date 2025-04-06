@@ -1,4 +1,4 @@
-export const APP_NAME = "StudyFlow";
+export const APP_NAME = "Dirayah";
 
 // Supported locales
 export const locales = ["en", "ar"];

@@ -14,7 +14,7 @@ export function CopyRight() {
   return (
     <footer className="mt-auto w-full">
       <div className="flex w-full flex-col items-center gap-2 px-10 text-sm text-gray-500 sm:flex-row sm:justify-between lg:w-1/2">
-        <span>© {year ?? "2025"} StudyFlow</span>
+        <span>© {year ?? "2025"} Dirayah</span>
         <div className="flex flex-row items-center gap-1">
           <span>{t("developedBy")} </span>
           <a

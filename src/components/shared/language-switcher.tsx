@@ -1,12 +1,12 @@
 "use client";
 
-import { Directions, Languages, Locale } from "@/lib/types/localization";
 import { cn } from "@/lib/utils";
+import { Directions, Languages, Locale } from "@/types/localization";
 import { Check, ChevronsUpDown, Loader2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import {
   Command,
@@ -18,38 +18,51 @@ import {
 } from "../ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-type Language = {
+interface Language {
   code: Locale;
   name: string;
   flag: string;
-};
+}
 
-const languages: Language[] = [
+const LANGUAGES: Readonly<Language[]> = [
   { code: Languages.Arabic, name: "العربية", flag: "/images/flags/egypt.png" },
   { code: Languages.English, name: "English", flag: "/images/flags/usa.png" },
-];
+] as const;
+
+const DEFAULT_LANGUAGE = LANGUAGES[1];
 
 const getStoredLanguage = (currentLocale: Locale): Language => {
   try {
     if (typeof window === "undefined") {
       return (
-        languages.find((lang) => lang.code === currentLocale) || languages[1]
+        LANGUAGES.find((lang) => lang.code === currentLocale) ??
+        DEFAULT_LANGUAGE
       );
     }
+
     const storedLanguage = localStorage.getItem("preferredLanguage");
-    return storedLanguage
-      ? languages.find((l) => l.code === storedLanguage) || languages[1]
-      : languages.find((lang) => lang.code === currentLocale) || languages[1];
+    if (!storedLanguage) {
+      return (
+        LANGUAGES.find((lang) => lang.code === currentLocale) ??
+        DEFAULT_LANGUAGE
+      );
+    }
+
+    return LANGUAGES.find((l) => l.code === storedLanguage) ?? DEFAULT_LANGUAGE;
   } catch (e) {
     console.error("Error accessing localStorage:", e);
-    return languages[1];
+    return DEFAULT_LANGUAGE;
   }
 };
 
 export function LanguageSwitcher() {
   const t = useTranslations("common");
   const locale = useLocale();
-  const dir = locale === Languages.Arabic ? Directions.RTL : Directions.LTR;
+  const dir = useMemo(
+    () => (locale === Languages.Arabic ? Directions.RTL : Directions.LTR),
+    [locale],
+  );
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -59,23 +72,47 @@ export function LanguageSwitcher() {
     getStoredLanguage(locale as Locale),
   );
 
-  const handleLanguageChange = (lang: Language) => {
-    if (lang.code === locale) {
+  const handleLanguageChange = useCallback(
+    (lang: Language) => {
+      if (lang.code === locale) {
+        setOpen(false);
+        return;
+      }
+
+      setIsChangeLanguage(true);
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem("preferredLanguage", lang.code);
+      }
+
+      setSelectedLanguage(lang);
       setOpen(false);
-      return;
-    }
-    setIsChangeLanguage(true);
 
-    if (typeof window !== "undefined") {
-      localStorage.setItem("preferredLanguage", lang.code);
-    }
+      const newPath = pathname.replace(`/${locale}`, `/${lang.code}`);
+      router.push(newPath);
+    },
+    [locale, pathname, router],
+  );
 
-    setSelectedLanguage(lang);
-    setOpen(false);
-
-    const newPath = pathname.replace(`/${locale}`, `/${lang.code}`);
-    router.push(newPath);
-  };
+  const buttonContent = useMemo(
+    () => (
+      <span className="flex items-center gap-2">
+        <Image
+          src={selectedLanguage.flag}
+          alt={selectedLanguage.name}
+          width={20}
+          height={20}
+          className={cn(isChangeLanguage ? "opacity-50" : "")}
+        />
+        {isChangeLanguage ? (
+          <p className="text-xs">{t("changingLanguage")}</p>
+        ) : (
+          selectedLanguage.name
+        )}
+      </span>
+    ),
+    [isChangeLanguage, selectedLanguage, t],
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -88,20 +125,7 @@ export function LanguageSwitcher() {
           className="w-[150px] justify-between md:w-[200px]"
           disabled={isChangeLanguage}
         >
-          <span className="flex items-center gap-2">
-            <Image
-              src={selectedLanguage.flag}
-              alt={selectedLanguage.name}
-              width={20}
-              height={20}
-              className={cn(isChangeLanguage ? "opacity-50" : "")}
-            />
-            {isChangeLanguage ? (
-              <p className="text-xs"> {t("changingLanguage")} </p>
-            ) : (
-              selectedLanguage.name
-            )}
-          </span>
+          {buttonContent}
           {isChangeLanguage ? (
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
@@ -120,7 +144,7 @@ export function LanguageSwitcher() {
           <CommandList>
             <CommandEmpty>{t("noLanguagesFound")}</CommandEmpty>
             <CommandGroup>
-              {languages.map((lang) => (
+              {LANGUAGES.map((lang) => (
                 <CommandItem
                   key={lang.code}
                   onSelect={() => handleLanguageChange(lang)}

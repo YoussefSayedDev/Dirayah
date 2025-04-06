@@ -6,14 +6,16 @@ import { ReactNode } from "react";
 
 export default async function DashboardLayout({
   children,
-  params: { locale },
-}: {
+  params,
+}: Readonly<{
   children: ReactNode;
-  params: { locale: string };
-}) {
+  params: Promise<{ locale: string }>;
+}>) {
   const role = "student";
   const first_name = "Youssef";
   const last_name = "El Sayed";
+
+  const { locale } = await params;
 
   return (
     <SidebarProvider>

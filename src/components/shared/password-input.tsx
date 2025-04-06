@@ -1,6 +1,6 @@
 "use client";
-import { Languages, Locale } from "@/lib/types/localization";
 import { cn } from "@/lib/utils";
+import { Languages, Locale } from "@/types/localization";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useLocale } from "next-intl";
 import React, { useState } from "react";

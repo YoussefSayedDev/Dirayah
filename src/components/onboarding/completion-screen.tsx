@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { OnboardingRole } from "@/lib/types/user";
+import { OnboardingRole } from "@/types/user";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 export default function CompletionScreen({

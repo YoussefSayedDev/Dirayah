@@ -1,9 +1,14 @@
 import { AuthLayoutGrid } from "@/components/auth/auth-layout-grid";
 import { SignInForm } from "@/components/auth/sign-in-form";
+import { auth } from "@/lib/auth";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function SignInPage() {
+  const session = await auth();
+  if (session) redirect("/dashboard");
+
   // Localization
   const t = await getTranslations("auth.signIn");
   return (

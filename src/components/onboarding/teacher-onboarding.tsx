@@ -348,7 +348,7 @@ export default function TeacherOnboarding({ step }: { step: number }) {
             <div className="pt-4">
               <Label>{t("case3.orShareLink")}</Label>
               <div className="mt-2 flex gap-2">
-                <Input value="https://studyflow.com/join/ABC123" readOnly />
+                <Input value="https://dirayah.com/join/ABC123" readOnly />
                 <Button variant="outline" className="whitespace-nowrap">
                   {t("case3.copyLink")}
                 </Button>

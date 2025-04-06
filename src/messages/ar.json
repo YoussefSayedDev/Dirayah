@@ -1,7 +1,7 @@
 {
   "auth": {
     "signIn": {
-      "heading": "مرحبًا بعودتك إلى StudyFlow",
+      "heading": "مرحبًا بعودتك إلى دِرَايَة",
       "description": "أدخل اسم المستخدم وكلمة المرور للمتابعة.",
       "noAccount": "ليس لديك حساب؟ سجل الدخول",
       "form": {
@@ -15,6 +15,13 @@
         "rememberMe": "تذكرني",
         "google": "جوجل",
         "facebook": "فيسبوك"
+      },
+      "common": {
+        "failed": "فشل التسجيل",
+        "success": "تم التسجيل بنجاح",
+        "somethingWentWrong": "حدث خطأ ما",
+        "loginFailed": "فشل تسجيل الدخول",
+        "redirectingToDashboard": "سيتم توجيهك إلى لوحة التحكم في"
       }
     },
     "signUp": {
@@ -32,7 +39,12 @@
         "orSignUpWith": "أو إنشاء حساب باستخدام",
         "google": "جوجل",
         "facebook": "فيسبوك"
-      }
+      },
+      "failed": "فشل التسجيل",
+      "success": "تم التسجيل بنجاح",
+      "redirectingToOnboarding": "إعادة توجيهك إلى التوجيه...",
+      "loginFailed": "فشل تسجيل الدخول",
+      "somethingWentWrong": "حدث خطأ ما"
     },
     "forgotPassword": {
       "heading": "نسيت كلمة المرور؟",
@@ -64,10 +76,15 @@
       }
     }
   },
-  "onboarding": {
+  "Onboarding": {
     "main": {
-      "title": "مرحبًا بك في StudyFlow",
+      "title": "مرحبًا بك في دِرَايَة",
       "description": "لنقم بتخصيص تجربتك. اختر دورك للبدء في عملية إعداد مخصصة.",
+      "onboardingComplete": "اكتمل التعريف!",
+      "redirectingToDashboard": "سيتم توجيهك إلى لوحة التحكم في",
+      "welcomeToOnboarding": "مرحبًا بك في عملية التعريف",
+      "completeProfileInfo": "أكمل معلومات الملف الشخصي.",
+
       "roles": {
         "student": {
           "title": "طالب",
@@ -300,7 +317,13 @@
       "continue": "المتابعة",
       "completed": "تم",
       "step": "الخطوة {step}",
-      "of": "من {total}"
+      "of": "من {total}",
+      "error": "خطأ",
+      "success": "نجاح",
+      "loading": "جاري التحميل",
+      "pleaseSelectRole": "الرجاء اختيار دور من الممكن",
+      "pleaseEnterName": "الرجاء إدخال اسمك",
+      "somethingWentWrong": "حدث خطأ ما, يرجى المحاولة مرة أخرى."
     }
   },
   "header": {
