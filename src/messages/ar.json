@@ -84,7 +84,32 @@
       "redirectingToDashboard": "سيتم توجيهك إلى لوحة التحكم في",
       "welcomeToOnboarding": "مرحبًا بك في عملية التعريف",
       "completeProfileInfo": "أكمل معلومات الملف الشخصي.",
-
+      "page": {
+        "welcomeToOnboarding": "مرحبًا بك في عملية التعريف",
+        "completeProfileInfo": "دعنا نكمل معلومات ملفك الشخصي لتخصيص تجربتك.",
+        "roles": {
+          "title": "ماذا تتوقع",
+          "options": {
+            "student": {
+              "title": "اختر دورك",
+              "description": "حدد ما إذا كنت طالبًا أو ولي أمر أو معلمًا لتخصيص تجربتك."
+            },
+            "teacher": {
+              "title": "أكمل ملفك الشخصي",
+              "description": "قدم معلومات عن نفسك لمساعدتنا في تخصيص تجربتك."
+            },
+            "parent": {
+              "title": "حدد تفضيلاتك",
+              "description": "أخبرنا عن اهتماماتك أو المواد أو مجالات التدريس لتخصيص لوحة التحكم الخاصة بك."
+            },
+            "admin": {
+              "title": "ابدأ رحلتك",
+              "description": "ابدأ استخدام دِرَايَة بتجربة مخصصة بالكامل تناسب احتياجاتك."
+            }
+          }
+        },
+        "continue": "المتابعة إلى اختيار الدور"
+      },
       "roles": {
         "student": {
           "title": "طالب",
@@ -97,7 +122,40 @@
         "parent": {
           "title": "ولي امر",
           "description": "تتبع تقدمك الابناء والتواصل مع المعلمين"
+        },
+        "admin": {
+          "title": "مدير",
+          "description": "إدارة المستخدمين، الدورات، والمزيد"
         }
+      }
+    },
+    "role": {
+      "loading": "جاري التحميل...",
+      "title": "تحديد الدور",
+      "description": "لنقم بتخصيص تجربتك. اختر دورك للبدء في عملية إعداد مخصصة.",
+      "options": {
+        "student": {
+          "title": "طالب",
+          "description": "الوصول إلى الدورات، تتبع تقدمك، والتواصل مع المعلمين"
+        },
+        "teacher": {
+          "title": "معلم",
+          "description": "إنشاء الدورات، إدارة الطلاب، وتتبع الأداء"
+        },
+        "parent": {
+          "title": "ولي امر",
+          "description": "تتبع تقدمك الابناء والتواصل مع المعلمين"
+        },
+        "admin": {
+          "title": "مدير",
+          "description": "إدارة المستخدمين، الدورات، والمزيد"
+        }
+      },
+      "errors": {
+        "initFailedTitle": "فشل التهيئة",
+        "tryRefreshing": "يرجى محاولة تحديث الصفحة.",
+        "userStore": "فشل تهيئة بيانات المستخدم",
+        "userStoreFailed": "فشل تهيئة بيانات المستخدم"
       }
     },
     "student": {
@@ -121,7 +179,11 @@
           "elmentary": "المدرسة الابتدائية",
           "middle": "المدرسة الإعدادية",
           "high": "المدرسة الثانوية",
-          "college": "الجامعة"
+          "college": "الجامعة",
+          "schoolLabel": "اسم المدرسة",
+          "schoolPlaceholder": "أدخل اسم مدرستك",
+          "gradeLabel": "الصف الحالي",
+          "gradePlaceholder": "أدخل صفك الحالي"
         }
       },
       "case2": {
@@ -137,223 +199,49 @@
         "trackProgress": "تتبع تقدمك",
         "connectWithTeachers": "التواصل مع المعلمين",
         "description": "توفر لك لوحة التحكم المخصصة وصولاً سهلاً إلى جميع دوراتك، وواجباتك، وتتبع تقدمك في مكان واحد."
+      },
+      "validation": {
+        "firstNameRequired": "الاسم الأول مطلوب",
+        "lastNameRequired": "الاسم الأخير مطلوب",
+        "interestsRequired": "الرجاء اختيار مادة واحدة على الأقل",
+        "educationLevelRequired": "الرجاء اختيار المستوى التعليمي",
+        "courseSelectionRequired": "الرجاء اختيار دورة أو إدخال رمز الدورة"
+      },
+      "navigation": {
+        "next": "التالي",
+        "previous": "السابق",
+        "complete": "إكمال الإعداد"
       }
-    },
-    "teacher": {
-      "case0": {
-        "title": "المعلومات الأساسية",
-        "form": {
-          "firstNameLabel": "الاسم الأول",
-          "firstNamePlaceholder": "أدخل اسمك الأول",
-          "lastNameLabel": "اسم العائلة",
-          "lastNamePlaceholder": "أدخل اسم عائلتك"
-        },
-        "experience": {
-          "label": "سنوات الخبرة في التدريس",
-          "select": {
-            "placeholder": "اختر عدد سنوات خبرتك",
-            "options": {
-              "0-2": "0-2 سنوات",
-              "3-5": "3-5 سنوات",
-              "6-10": "6-10 سنوات",
-              "10+": "أكثر من 10 سنوات"
-            }
-          }
-        },
-        "subject": {
-          "label": "التخصص الدراسي",
-          "select": {
-            "placeholder": "اختر تخصصك الأساسي",
-            "options": {
-              "math": "الرياضيات",
-              "science": "العلوم",
-              "programming": "البرمجة",
-              "languages": "اللغات",
-              "history": "التاريخ",
-              "arts": "الفنون"
-            }
-          }
-        }
-      },
-      "case1": {
-        "profileSetup": "إعداد الملف الشخصي",
-        "uploadPhoto": "تحميل صورة",
-        "professionalTitle": "المسمى الوظيفي",
-        "professionalPlaceholder": "على سبيل المثال، مدرس الرياضيات، أستاذ العلوم",
-        "bio": "السيرة المهنية",
-        "bioPlaceholder": "أخبر الطلاب عن خلفيتك وفلسفتك التدريسية وخبرتك..."
-      },
-      "case2": {
-        "createCourse": "إنشاء دورتك الأولى",
-        "courseTitle": "عنوان الدورة",
-        "courseTitlePlaceholder": "على سبيل المثال، الدرس الأول في الرياضيات",
-        "category": {
-          "label": "التصنيف",
-          "placeholder": "اختر التصنيف",
-          "options": {
-            "math": "الرياضيات",
-            "science": "العلوم",
-            "programming": "البرمجة",
-            "languages": "اللغات",
-            "history": "التاريخ",
-            "arts": "الفنون",
-            "music": "الموسيقى",
-            "physicalEducation": "التربية البدنية"
-          }
-        },
-        "difficultyLevel": {
-          "label": "مستوى الصعوبة",
-          "placeholder": "اختر المستوى",
-          "options": {
-            "beginner": "مبتدئ",
-            "intermediate": "متوسط",
-            "advanced": "متقدم"
-          }
-        },
-        "courseDescription": "وصف الدورة",
-        "courseDescriptionPlaceholder": "وصف ما سيتعلمه الطلاب في هذه الدورة...",
-        "tabs": {
-          "lessons": {
-            "title": "الدروس",
-            "label": "الدرس الأول",
-            "placeholder": "عنوان الدرس",
-            "addLesson": "إضافة درس"
-          },
-          "materials": {
-            "title": "المواد",
-            "dragAndDropFiles": "اسحب الملفات وأفلتها أو",
-            "browseFiles": "استعرض الملفات"
-          },
-          "assignments": {
-            "title": "الواجبات",
-            "label": "الواجب الأول",
-            "placeholder": "عنوان الواجب",
-            "addAssignment": "إضافة واجب"
-          }
-        }
-      },
-      "case3": {
-        "inviteStudents": "دعوة الطلاب",
-        "shareLink": "شارك رمز الفصل هذا مع طلابك",
-        "copyCode": "نسخ الرمز",
-        "inviteLink": "دعوة الطلاب عبر البريد الإلكتروني",
-        "sendInvites": "إرسال الدعوات",
-        "inviteLinkPlaceholder": "أدخل عناوين البريد الإلكتروني مفصولة ( , ) بينها",
-        "orShareLink": "أو شارك رابط الدعوة هذا:",
-        "copyLink": "نسخ الرابط"
-      },
-      "case4": {
-        "dashboardTour": "جولة في لوحة التحكم",
-        "manageCourses": "إدارة دوراتك",
-        "trackStudentProgress": "تتبع تقدم الطلاب",
-        "createAndGradeAssignments": "إنشاء وتصحيح الواجبات",
-        "courseManagement": "إدارة الدورات",
-        "courseManagementDescription": "إنشاء وتنظيم محتوى الدورات",
-        "studentProgressTracking": "تتبع تقدم الطلاب",
-        "studentProgressTrackingDescription": "مراقبة الأداء والتفاعل",
-        "createAndOrganizeCourseContent": "إنشاء وتنظيم محتوى الدورات",
-        "studentAnalytics": "تحليلات الطلاب",
-        "monitorPerformanceAndEngagement": "مراقبة الأداء والتفاعل",
-        "communicationTools": "أدوات التواصل",
-        "communicationToolsDescription": "التواصل مع الطلاب وأولياء الأمور"
-      }
-    },
-    "parent": {
-      "case0": {
-        "title": "المعلومات الأساسية",
-        "form": {
-          "firstNameLabel": "الاسم الأول",
-          "firstNamePlaceholder": "أدخل اسمك الأول",
-          "lastNameLabel": "اسم العائلة",
-          "lastNamePlaceholder": "أدخل اسم عائلتك"
-        },
-        "relation": {
-          "label": "العلاقة بالطالب",
-          "select": {
-            "placeholder": "اختر علاقتك بالطالب",
-            "options": {
-              "parent": "ولي أمر",
-              "guardian": "الوصي القانوني",
-              "grandparent": "الجد / الجدة",
-              "other": "أخرى"
-            }
-          }
-        },
-        "numberOfChildren": {
-          "label": "عدد الأطفال"
-        }
-      },
-      "case1": {
-        "linkChild": "ربط حساب الطفل",
-        "description": "قم بربط حسابك بحساب طفلك لمتابعة تقدمه والتواصل مع المعلمين.",
-        "card": {
-          "usernameLabel": "اسم المستخدم للطفل",
-          "usernamePlaceholder": "أدخل اسم المستخدم لطفلك",
-          "or": "أو",
-          "emailLabel": "البريد الإلكتروني للطفل",
-          "emailPlaceholder": "أدخل البريد الإلكتروني لطفلك",
-          "linkAccount": "ربط الحساب"
-        },
-        "donotHaveChild": "لا تملك معلومات طفلك؟ يمكنك أيضًا إرسال رابط دعوة:",
-        "copyLink": "نسخ الرابط"
-      },
-      "case2": {
-        "dashboardTour": "جولة في لوحة التحكم",
-        "trackChildProgress": "متابعة تقدم الطفل",
-        "viewUpcomingAssignments": "عرض الواجبات القادمة",
-        "messageTeachersDirectly": "مراسلة المعلمين مباشرة",
-        "progressTracking": "تتبع التقدم",
-        "monitorGradesAndCompletion": "مراقبة الدرجات والإنجازات",
-        "assignmentCalendar": "تقويم الواجبات",
-        "assignCalendarDescription": "البقاء على اطلاع على مواعيد الاستحقاق",
-        "teacherCommunication": "التواصل مع المعلمين",
-        "teacherCommunicationDescription": "المراسلة المباشرة مع المعلمين"
-      }
-    },
-    "common": {
-      "skipOnboarding": "تخطي التوجيه",
-      "next": "التالي",
-      "back": "السابق",
-      "continue": "المتابعة",
-      "completed": "تم",
-      "step": "الخطوة {step}",
-      "of": "من {total}",
-      "error": "خطأ",
-      "success": "نجاح",
-      "loading": "جاري التحميل",
-      "pleaseSelectRole": "الرجاء اختيار دور من الممكن",
-      "pleaseEnterName": "الرجاء إدخال اسمك",
-      "somethingWentWrong": "حدث خطأ ما, يرجى المحاولة مرة أخرى."
     }
   },
   "header": {
-    "welcome": "مرحبا",
+    "welcome": "مرحبًا",
     "light": "فاتح",
     "dark": "داكن",
     "system": "النظام",
     "student": "طالب",
     "teacher": "معلم",
-    "parent": "ولي امر",
+    "parent": "ولي أمر",
     "admin": "مدير",
     "profile": "الملف الشخصي",
     "settings": "الإعدادات",
     "signOut": "تسجيل الخروج",
     "dashboardLanguageSwitcher": {
-      "switchLanguage": "تغير اللغة",
-      "english": "اللغة الانجليزية",
-      "arabic": "اللغة العربية"
+      "switchLanguage": "تغيير اللغة",
+      "english": "الإنجليزية",
+      "arabic": "العربية"
     }
   },
   "sidebar": {
     "lms": "نظام إدارة التعلم",
-    "home": "الصفحة الرئيسية",
+    "home": "الرئيسية",
     "messages": "الرسائل",
     "settings": "الإعدادات",
     "courses": "الدورات",
-    "assignments": "المهام",
+    "assignments": "الواجبات",
     "students": "الطلاب",
     "student": "طالب",
-    "exams": "الامتحانات",
+    "exams": "الاختبارات",
     "children": "الأطفال",
     "progress": "التقدم",
     "users": "المستخدمون",
@@ -362,15 +250,15 @@
     "profile": "الملف الشخصي"
   },
   "navbar": {
-    "home": "الصفحة الرئيسية",
+    "home": "الرئيسية",
     "dashboard": "لوحة التحكم"
   },
   "common": {
-    "searchLanguage": "ابحث عن لغة",
-    "changingLanguage": "جارٍ تبديل اللغة...",
-    "noLanguagesFound": "لم يتم العثور على لغات مطابقة",
+    "searchLanguage": "البحث عن لغة",
+    "changingLanguage": "جاري تغيير اللغة...",
+    "noLanguagesFound": "لا توجد لغات تطابق بحثك",
     "allRightsReserved": "جميع الحقوق محفوظة",
-    "developedBy": "تم تطويره بواسطة",
+    "developedBy": "تم التطوير بواسطة",
     "youssefElSayed": "يوسف السيد"
   }
 }

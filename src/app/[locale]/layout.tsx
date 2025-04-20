@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
-import { AuthProvider } from "@/providers/auth-provider";
+// import { AuthProvider } from "@/providers/auth-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Directions, Languages, Locale } from "@/types/localization";
 import type { Metadata } from "next";
@@ -43,12 +43,12 @@ export default async function RootLayout({
       <body className={`antialiased`}>
         <SessionProvider>
           <NextIntlClientProvider messages={messages}>
-            <AuthProvider>
-              <ThemeProvider>
-                <main>{children}</main>
-                <Toaster />
-              </ThemeProvider>
-            </AuthProvider>
+            {/* <AuthProvider> */}
+            <ThemeProvider>
+              <main>{children}</main>
+              <Toaster />
+            </ThemeProvider>
+            {/* </AuthProvider> */}
           </NextIntlClientProvider>
         </SessionProvider>
       </body>

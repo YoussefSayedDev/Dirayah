@@ -1,297 +1,302 @@
-"use client";
+// "use client";
 
-import type React from "react";
+// import type React from "react";
 
-import { getArabicErrorMessage } from "@/lib/helpers";
-import { AuthError } from "@/types/validation";
-import {
-  signIn as nextAuthSignIn,
-  signOut as nextAuthSignOut,
-  useSession,
-} from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
+// import { getArabicErrorMessage } from "@/lib/helpers";
+// import { AuthError } from "@/types/validation";
+// import {
+//   signIn as nextAuthSignIn,
+//   signOut as nextAuthSignOut,
+//   useSession,
+// } from "next-auth/react";
+// import { useRouter } from "next/navigation";
+// import { createContext, useContext, useEffect, useState } from "react";
+// import { User } from "@/lib/stores/useUserStore";
 
-type User = {
-  id: string;
-  email: string;
-  name?: string;
-  role?: string;
-  onboardingCompleted: boolean;
-  onboardingStep: number;
-  firstName?: string;
-  lastName?: string;
-};
+// // type User = {
+// //   id: string;
+// //   email: string;
+// //   name?: string;
+// //   role?: string;
+// //   onboardingCompleted: boolean;
+// //   onboardingStep: number;
+// //   firstName?: string;
+// //   lastName?: string;
+// // };
 
-type AuthResponse = {
-  error: AuthError | null;
-};
+// type AuthResponse = {
+//   error: AuthError | null;
+// };
 
-type AuthContextType = {
-  user: User | null;
-  isLoading: boolean;
-  signIn: (username: string, password: string) => Promise<AuthResponse>;
-  signUp: (
-    email: string,
-    password: string,
-    username: string,
-  ) => Promise<AuthResponse>;
-  signOut: () => Promise<void>;
-  signInWithGoogle: () => Promise<void>;
-  signInWithFacebook: () => Promise<void>;
-  updateOnboardingStatus: (
-    completed: boolean,
-    step?: number,
-    userData?: {
-      role?: string;
-      firstName?: string;
-      lastName?: string;
-    },
-  ) => Promise<AuthResponse>;
-};
+// type AuthContextType = {
+//   user: User | null;
+//   isLoading: boolean;
+//   signIn: (username: string, password: string) => Promise<AuthResponse>;
+//   signUp: (
+//     email: string,
+//     password: string,
+//     username: string,
+//   ) => Promise<AuthResponse>;
+//   signOut: () => Promise<void>;
+//   signInWithGoogle: () => Promise<void>;
+//   signInWithFacebook: () => Promise<void>;
+//   // updateOnboardingStatus: (
+//   //   completed: boolean,
+//   //   step?: number,
+//   //   userData?: {
+//   //     role?: string;
+//   //     firstName?: string;
+//   //     lastName?: string;
+//   //     profile?: {
+//   //       dateOfBirth?: Date;
+//   //     };
+//   //     studentProfile?: {
+//   //       interests?: string[];
+//   //       grade?: string;
+//   //       school?: string;
+//   //       educationLevel?: string;
+//   //       courses?: string[];
+//   //       courseCode?: string;
+//   //     };
+//   //     teacherProfile?: {
+//   //       experience?: string;
+//   //       subject?: string;
+//   //       professionalTitle?: string;
+//   //       bio?: string;
+//   //     };
+//   //     parentProfile?: {
+//   //       relation?: string;
+//   //       numberOfChildren?: string;
+//   //       childUsername?: string;
+//   //       childEmail?: string;
+//   //     };
+//   //   },
+//   // ) => Promise<AuthResponse>;
+// };
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  const { data: session, status, update } = useSession();
-  const [user, setUser] = useState<User | null>(null);
-  const isLoading = status === "loading";
+// export function AuthProvider({ children }: { children: React.ReactNode }) {
+//   const router = useRouter();
+//   const { data: session, status, update } = useSession();
+//   const [user, setUser] = useState<User | null>(null);
+//   const isLoading = status === "loading";
 
-  useEffect(() => {
-    if (session?.user) {
-      setUser({
-        id: session.user.id,
-        email: session.user.email!,
-        name: session.user.name || undefined,
-        role: session.user.role,
-        onboardingCompleted: session.user.onboardingCompleted || false,
-        onboardingStep: session.user.onboardingStep || 0,
-        firstName: session.user.firstName,
-        lastName: session.user.lastName,
-      });
-    } else {
-      setUser(null);
-    }
-  }, [session]);
+//   console.log({
+//     role: session?.user.role,
+//   });
 
-  const signIn = async (
-    username: string,
-    password: string,
-  ): Promise<AuthResponse> => {
-    try {
-      const result = await nextAuthSignIn("credentials", {
-        username,
-        password,
-        redirect: false,
-      });
+//   useEffect(() => {
+//     if (session?.user) {
+//       setUser({
+//         id: session.user.id,
+//         email: session.user.email!,
+//         name: session.user.name || undefined,
+//         role: session.user.role,
+//         onboardingCompleted: session.user.onboardingCompleted || false,
+//         onboardingStep: session.user.onboardingStep || 0,
+//         firstName: session.user.firstName,
+//         lastName: session.user.lastName,
+//       });
+//     } else {
+//       setUser(null);
+//     }
+//     console.log({
+//       "session changed": session,
+//     });
+//   }, [session]);
 
-      if (result?.error) {
-        return {
-          error: {
-            message: {
-              en: result.error,
-              ar: getArabicErrorMessage(result.error),
-            },
-            isLocalized: true,
-          },
-        };
-      }
+//   const signIn = async (
+//     username: string,
+//     password: string,
+//   ): Promise<AuthResponse> => {
+//     try {
+//       const result = await nextAuthSignIn("credentials", {
+//         username,
+//         password,
+//         redirect: false,
+//       });
 
-      return { error: null };
-    } catch {
-      return {
-        error: {
-          message: {
-            en: "An unexpected error occurred",
-            ar: "حدث خطأ غير متوقع",
-          },
-          isLocalized: true,
-        },
-      };
-    }
-  };
+//       if (result?.error) {
+//         return {
+//           error: {
+//             message: {
+//               en: result.error,
+//               ar: getArabicErrorMessage(result.error),
+//             },
+//             isLocalized: true,
+//           },
+//         };
+//       }
 
-  const signUp = async (
-    email: string,
-    password: string,
-    username: string,
-  ): Promise<AuthResponse> => {
-    try {
-      // Call the register API endpoint
-      const response = await fetch("/api/auth/sign-up", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-          username,
-        }),
-      });
+//       return { error: null };
+//     } catch {
+//       return {
+//         error: {
+//           message: {
+//             en: "An unexpected error occurred",
+//             ar: "حدث خطأ غير متوقع",
+//           },
+//           isLocalized: true,
+//         },
+//       };
+//     }
+//   };
 
-      const data = await response.json();
+//   const signOut = async () => {
+//     await nextAuthSignOut({ redirect: false });
+//     router.push("/sign-in");
+//   };
 
-      if (!response.ok) {
-        return {
-          error: {
-            message: {
-              en: data.error.message.en || "Registration failed",
-              ar: data.error.message.ar || "فشل التسجيل",
-            },
-            isLocalized: true,
-          },
-        };
-      }
+//   const signInWithGoogle = async () => {
+//     await nextAuthSignIn("google", { callbackUrl: "/dashboard" });
+//   };
 
-      // Sign in the user after successful registration
-      const signInResult = await nextAuthSignIn("credentials", {
-        username,
-        password,
-        redirect: false,
-      });
+//   const signInWithFacebook = async () => {
+//     await nextAuthSignIn("facebook", { callbackUrl: "/dashboard" });
+//   };
 
-      if (signInResult?.error) {
-        return {
-          error: {
-            message: {
-              en: `Sign in failed: ${signInResult.error}`,
-              ar: `فشل تسجيل الدخول: ${signInResult.error}`,
-            },
-            isLocalized: true,
-          },
-        };
-      }
+//   const updateOnboardingStatus = async (
+//     completed: boolean,
+//     step?: number,
+//     userData?: {
+//       role?: string;
+//       firstName?: string;
+//       lastName?: string;
+//       profile?: {
+//         dateOfBirth?: Date;
+//       };
+//       studentProfile?: {
+//         interests?: string[];
+//         grade?: string;
+//         school?: string;
+//         educationLevel?: string;
+//         courses?: string[];
+//         courseCode?: string;
+//       };
+//       teacherProfile?: {
+//         experience?: string;
+//         subject?: string;
+//         professionalTitle?: string;
+//         bio?: string;
+//       };
+//       parentProfile?: {
+//         relation?: string;
+//         numberOfChildren?: string;
+//         childUsername?: string;
+//         childEmail?: string;
+//       };
+//     },
+//   ) => {
+//     try {
+//       if (!user) {
+//         return {
+//           error: {
+//             message: {
+//               en: "User not authenticated",
+//               ar: "المستخدم غير مصرح",
+//             },
+//             isLocalized: true,
+//           },
+//         };
+//       }
 
-      // At this point, NextAuth will have created a session
-      return {
-        error: null,
-      };
-    } catch {
-      return {
-        error: {
-          message: {
-            en: "An unexpected error occurred",
-            ar: "حدث خطأ غير متوقع",
-          },
-          isLocalized: true,
-        },
-      };
-    }
-  };
+//       const response = await fetch("/api/user/onboarding", {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           completed,
+//           step: step !== undefined ? step : user.onboardingStep,
+//           userData,
+//         }),
+//       });
 
-  const signOut = async () => {
-    await nextAuthSignOut({ redirect: false });
-    router.push("/sign-in");
-  };
+//       const data = await response.json();
 
-  const signInWithGoogle = async () => {
-    await nextAuthSignIn("google", { callbackUrl: "/dashboard" });
-  };
+//       console.log({
+//         data,
+//       });
 
-  const signInWithFacebook = async () => {
-    await nextAuthSignIn("facebook", { callbackUrl: "/dashboard" });
-  };
+//       if (!response.ok) {
+//         return {
+//           error: {
+//             message: {
+//               en: data.message || "Failed to update onboarding status",
+//               ar: data.messageAr || "فشل تحديث حالة التسجيل",
+//             },
+//             isLocalized: true,
+//           },
+//         };
+//       }
 
-  const updateOnboardingStatus = async (
-    completed: boolean,
-    step?: number,
-    userData?: {
-      role?: string;
-      firstName?: string;
-      lastName?: string;
-    },
-  ) => {
-    try {
-      if (!user) {
-        return {
-          error: {
-            message: {
-              en: "User not authenticated",
-              ar: "المستخدم غير مصرح",
-            },
-            isLocalized: true,
-          },
-        };
-      }
+//       // Update the session with all the new user data
+//       await update({
+//         ...session,
+//         user: {
+//           ...session?.user,
+//           onboardingCompleted: completed,
+//           onboardingStep: step !== undefined ? step : user.onboardingStep,
+//           ...(userData?.role && { role: userData.role }),
+//           ...(userData?.firstName && { firstName: userData.firstName }),
+//           ...(userData?.lastName && { lastName: userData.lastName }),
+//           ...(userData?.profile && { profile: userData.profile }),
+//           ...(userData?.studentProfile && {
+//             studentProfile: userData.studentProfile,
+//           }),
+//           ...(userData?.teacherProfile && {
+//             teacherProfile: userData.teacherProfile,
+//           }),
+//           ...(userData?.parentProfile && {
+//             parentProfile: userData.parentProfile,
+//           }),
+//         },
+//       });
 
-      const response = await fetch("/api/user/onboarding", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          completed,
-          step: step !== undefined ? step : user.onboardingStep,
-          userData,
-        }),
-      });
+//       // Update the user with the new data
+//       console.log({
+//         userData,
+//       });
 
-      const data = await response.json();
+//       return { error: null };
+//     } catch (error) {
+//       return {
+//         error: {
+//           message: {
+//             en: `An unexpected error occurred: ${error}`,
+//             ar: `حدث خطأ غير متوقع: ${error}`,
+//           },
+//           isLocalized: true,
+//         },
+//       };
+//     }
+//   };
 
-      if (!response.ok) {
-        return {
-          error: {
-            message: {
-              en: data.message || "Failed to update onboarding status",
-              ar: data.messageAr || "فشل تحديث حالة التسجيل",
-            },
-            isLocalized: true,
-          },
-        };
-      }
+//   return (
+//     <AuthContext.Provider
+//       value={{
+//         user,
+//         isLoading,
+//         signIn,
+//         signUp,
+//         signOut,
+//         signInWithGoogle,
+//         signInWithFacebook,
+//         updateOnboardingStatus,
+//       }}
+//     >
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// }
 
-      await update({
-        ...session,
-        user: {
-          ...session?.user,
-          onboardingCompleted: completed,
-          onboardingStep: step !== undefined ? step : user.onboardingStep,
-          ...(userData?.role && { role: userData.role }),
-          ...(userData?.firstName && { firstName: userData.firstName }),
-          ...(userData?.lastName && { lastName: userData.lastName }),
-        },
-      });
+// export const useAuth = () => {
+//   const context = useContext(AuthContext);
 
-      return { error: null };
-    } catch (error) {
-      return {
-        error: {
-          message: {
-            en: `An unexpected error occurred: ${error}`,
-            ar: `حدث خطأ غير متوقع: ${error}`,
-          },
-          isLocalized: true,
-        },
-      };
-    }
-  };
+//   if (context === undefined) {
+//     throw new Error("useAuth must be used within an AuthProvider");
+//   }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isLoading,
-        signIn,
-        signUp,
-        signOut,
-        signInWithGoogle,
-        signInWithFacebook,
-        updateOnboardingStatus,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-
-  if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-
-  return context;
-};
+//   return context;
+// };

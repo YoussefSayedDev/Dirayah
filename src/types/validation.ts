@@ -15,3 +15,7 @@ export type AuthError = {
   message: LocalizedMessage | string;
   isLocalized?: boolean;
 };
+
+export type AuthResponse = {
+  error: AuthError | null;
+};
