@@ -46,18 +46,56 @@
       "loginFailed": "Login failed",
       "somethingWentWrong": "Something went wrong"
     },
+    "verifyEmail": {
+      "heading": "Verify Email",
+      "description": "We've sent you a verification email. Please check your inbox and click the link to verify your email address.",
+      "submit": "Verify Email"
+    },
     "forgotPassword": {
       "heading": "Forgot Password?",
       "description": "No worries, we’ll help you reset it.",
       "email": "Email",
-      "submit": "Send Reset Link"
+      "submit": "Send Reset Link",
+      "back": "Back",
+      "form": {
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "submit": "Send Reset Link",
+        "common": {
+          "failed": "Failed",
+          "success": "Success",
+          "redirectingToDashboard": "You'll be redirected to your dashboard in a moment...",
+          "somethingWentWrong": "Something went wrong, Please try again."
+        }
+      }
     },
     "resetPassword": {
       "heading": "Reset Your Password",
       "description": "Set a new password to secure your account.",
       "password": "New Password",
       "confirmPassword": "Confirm New Password",
-      "submit": "Save Password"
+      "submit": "Save Password",
+      "back": "Back",
+      "form": {
+        "passwordLabel": "New Password",
+        "passwordPlaceholder": "Enter your new password",
+        "confirmPasswordLabel": "Confirm New Password",
+        "confirmPasswordPlaceholder": "Confirm your new password",
+        "submit": "Save Password"
+      }
+    },
+    "checkEmail": {
+      "heading": "Check your email",
+      "description": "We’ve sent a confirmation email to your email address. Please check your inbox and click the link to confirm your email address.",
+      "submit": "Confirm Email",
+      "back": "Back",
+      "form": {
+        "resend": "Resend",
+        "openGmail": "Open Gmail",
+        "sending": "Sending...",
+        "emailSent": "Email sent",
+        "didNotReceive": "Didn't receive the email?"
+      }
     },
     "form": {
       "validation": {

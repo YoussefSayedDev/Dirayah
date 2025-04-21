@@ -1,7 +1,7 @@
-import { AuthLayoutGrid } from "@/components/auth/auth-layout-grid";
 import { SignUpForm } from "@/components/auth/sign-up-form";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 export default async function SignUpPage() {
   // Localization
@@ -25,8 +25,14 @@ export default async function SignUpPage() {
       </section>
 
       {/* Image Section */}
-      <aside className="auth-image-section">
-        <AuthLayoutGrid />
+      <aside className="auth-image-section overflow-hidden">
+        <Image
+          src="/images/auth-pages.webp"
+          alt="Learning LMS Auth Image"
+          width={1200}
+          height={1200}
+          priority
+        />
       </aside>
     </main>
   );

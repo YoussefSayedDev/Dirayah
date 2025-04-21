@@ -11,6 +11,19 @@ export type SignUpFormSchemaType = {
   password: string;
 };
 
+export type VerifyEmailFormSchemaType = {
+  verificationCode: string;
+};
+
+export type ForgotPasswordFormSchemaType = {
+  email: string;
+};
+
+export type ResetPasswordFormSchemaType = {
+  password: string;
+  confirmPassword: string;
+};
+
 export type AuthError = {
   message: LocalizedMessage | string;
   isLocalized?: boolean;

@@ -1,13 +1,13 @@
-import { ForgotPasswordForm } from "@/components/auth/forget-password-form";
+import { ResetPasswordForm } from "@/components/auth/reset-password-form";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ForgotPasswordPage() {
+export default async function ResetPasswordPage() {
   // Localization
-  const t = await getTranslations("auth.forgotPassword");
+  const t = await getTranslations("auth.resetPassword");
   return (
     <main className="auth-container">
       {/* Form Section */}
@@ -15,7 +15,10 @@ export default async function ForgotPasswordPage() {
         <div className="auth-form-container">
           {/* Back Button */}
           <div className="w-full text-start">
-            <Link href="/sign-in" className="mb-10 flex items-center gap-2">
+            <Link
+              href="/forgot-password"
+              className="mb-10 flex items-center gap-2"
+            >
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="text-primary h-4 w-4" />
                 <span className="text-primary text-sm font-medium">
@@ -32,7 +35,7 @@ export default async function ForgotPasswordPage() {
               {t("description")}
             </p>
             <div className="my-8">
-              <ForgotPasswordForm />
+              <ResetPasswordForm />
             </div>
           </div>
         </div>
