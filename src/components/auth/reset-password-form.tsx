@@ -3,7 +3,7 @@ import { useCreateAuthSchema } from "@/hooks/use-createAuthSchema";
 import { ResetPasswordFormSchemaType } from "@/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LogIn } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { LoadingButton } from "../shared/loading-button";
@@ -21,7 +21,7 @@ export function ResetPasswordForm() {
 
   // Localization
   const t = useTranslations("auth.resetPassword");
-  const locale = useLocale();
+  // const locale = useLocale();
   const { ResetPasswordFormSchema } = useCreateAuthSchema();
 
   const form = useForm<ResetPasswordFormSchemaType>({

@@ -1,9 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useLocale, useTranslations } from "next-intl";
+// import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function CheckEmailForm() {
@@ -12,8 +10,8 @@ export function CheckEmailForm() {
 
   // Localization
   const t = useTranslations("auth.checkEmail.form");
-  const locale = useLocale();
-  const router = useRouter();
+  // const locale = useLocale();
+  // const router = useRouter();
 
   const handleResend = async () => {
     setIsResending(true);
