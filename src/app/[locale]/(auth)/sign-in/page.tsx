@@ -1,7 +1,7 @@
-import { AuthLayoutGrid } from "@/components/auth/auth-layout-grid";
 import { SignInForm } from "@/components/auth/sign-in-form";
 import { auth } from "@/lib/auth";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -30,8 +30,14 @@ export default async function SignInPage() {
       </section>
 
       {/* Image Section */}
-      <aside className="auth-image-section">
-        <AuthLayoutGrid />
+      <aside className="auth-image-section overflow-hidden">
+        <Image
+          src="/images/auth-pages.webp"
+          alt="Learning LMS Auth Image"
+          width={1200}
+          height={1200}
+          priority
+        />
       </aside>
     </main>
   );

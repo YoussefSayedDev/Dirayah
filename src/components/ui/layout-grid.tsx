@@ -125,15 +125,23 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
                 handleClick(card);
               }
             }}
+            animate={{
+              scale: selected?.id === card.id ? 1.05 : 1,
+              boxShadow: selected?.id === card.id
+                ? "0 8px 32px rgba(0,0,0,0.25)"
+                : "0 2px 8px rgba(0,0,0,0.08)",
+            }}
             transition={{
               layout: {
                 duration: selected?.id === card.id ? 0.6 : 2.5,
-                ease: [0.16, 1, 0.3, 1], // Adjusted ease curve for smoother return
+                ease: [0.16, 1, 0.3, 1],
                 type: "spring",
-                stiffness: selected?.id === card.id ? 100 : 60, // Lower stiffness for smoother return
-                damping: selected?.id === card.id ? 20 : 30, // Higher damping for smoother return
-                restDelta: 0.001, // Smaller rest delta for more precise animation
+                stiffness: selected?.id === card.id ? 100 : 60,
+                damping: selected?.id === card.id ? 20 : 30,
+                restDelta: 0.001,
               },
+              scale: { type: "spring", stiffness: 200, damping: 20 },
+              boxShadow: { duration: 0.3 },
             }}
           >
             {selected?.id === card.id && <SelectedCard selected={selected} />}

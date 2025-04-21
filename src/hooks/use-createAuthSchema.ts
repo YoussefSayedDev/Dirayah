@@ -35,8 +35,31 @@ export function useCreateAuthSchema() {
       ),
   });
 
+  const ForgotPasswordFormSchema = z.object({
+    email: z.string().min(1, t("email.min")).email(t("email.email")),
+  });
+
+  const ResetPasswordFormSchema = z.object({
+    password: z
+      .string()
+      .min(8, t("password.min"))
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        t("password.regex"),
+      ),
+    confirmPassword: z
+      .string()
+      .min(8, t("password.min"))
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        t("password.regex"),
+      ),
+  });
+
   return {
     SignInFormSchema,
     SignUpFormSchema,
+    ForgotPasswordFormSchema,
+    ResetPasswordFormSchema,
   };
 }
