@@ -16,14 +16,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LogIn } from "lucide-react";
 // import { useLocale, useTranslations } from "next-intl";
 // import { useRouter } from "next/navigation";
-import { useState } from "react";
+// import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 // import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import { LoadingButton } from "../shared/loading-button";
 
 export function ForgotPasswordForm() {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // Localization
   const t = useTranslations("auth.forgotPassword");
@@ -99,7 +99,7 @@ export function ForgotPasswordForm() {
 
           {/* Submit Button */}
           <LoadingButton
-            loading={isLoading}
+            loading={false}
             type="submit"
             className="w-full select-none"
           >
