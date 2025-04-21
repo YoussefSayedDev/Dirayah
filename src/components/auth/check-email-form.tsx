@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-// import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 // import { useRouter } from "next/navigation";
 import { useState } from "react";
 
