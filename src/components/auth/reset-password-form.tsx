@@ -4,7 +4,7 @@ import { ResetPasswordFormSchemaType } from "@/types/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+// import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { LoadingButton } from "../shared/loading-button";
 import { PasswordInput } from "../shared/password-input";
@@ -17,7 +17,7 @@ import {
 } from "../ui/form";
 
 export function ResetPasswordForm() {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // Localization
   const t = useTranslations("auth.resetPassword");
@@ -32,11 +32,11 @@ export function ResetPasswordForm() {
     },
   });
 
-  async function onSubmit(data: ResetPasswordFormSchemaType) {}
+  // async function onSubmit(data: ResetPasswordFormSchemaType) {}
   return (
     <FormProvider {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        // onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-3"
         aria-live="polite"
       >
@@ -82,7 +82,7 @@ export function ResetPasswordForm() {
 
           {/* Submit Button */}
           <LoadingButton
-            loading={isLoading}
+            loading={false}
             type="submit"
             className="w-full select-none"
           >
