@@ -54,6 +54,7 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Match all public pages except API routes and static files
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
+  matcher: [
+    "/((?!api/auth|api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
+  ],
 };

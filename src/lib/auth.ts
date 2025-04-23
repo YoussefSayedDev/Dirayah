@@ -8,7 +8,10 @@ import { prisma } from "./prisma";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google,
-    Facebook,
+    Facebook({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
     Credentials({
       credentials: {
         username: { label: "Username", type: "text" },
