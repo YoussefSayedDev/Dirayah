@@ -114,7 +114,7 @@ export const authService = {
 
   signInWithGoogle: async (): Promise<void> => {
     try {
-      await nextAuthSignIn("google", { callbackUrl: "/dashboard" });
+      await nextAuthSignIn("google", { callbackUrl: "/onboarding" });
     } catch (error) {
       console.error("Google sign-in error:", error);
       throw error;
@@ -123,7 +123,7 @@ export const authService = {
 
   signInWithFacebook: async () => {
     try {
-      await nextAuthSignIn("facebook", { callbackUrl: "/dashboard" });
+      await nextAuthSignIn("facebook", { callbackUrl: "/onboarding" });
     } catch (error) {
       console.error("Facebook sign-in error:", error);
       throw error;
