@@ -1,8 +1,54 @@
 # Dirayah Learning Management System 🎓
 
+![Next.js](https://img.shields.io/badge/Next.js-15-blue?logo=nextdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38b2ac?logo=tailwindcss)
+![License](https://img.shields.io/github/license/YoussefSayedDev/dirayah)
+
 ## Overview
 
 Dirayah is a comprehensive Learning Management System (LMS) designed to facilitate educational interactions between students, teachers, parents, and administrators. The platform offers a modern, responsive interface with multilingual support (Arabic and English) and role-based access control.
+
+## 🔍 Demo
+
+You can check out the live version of Dirayah here:  
+👉 [Live Preview](https://dirayah.vercel.app)
+
+---
+
+## 🖼 Screenshots
+
+> ✨ Screenshots of the application in different languages.
+
+**Sign In Page:**
+
+![Sign In Page English](./public/screenshots/sign-in-en.png)
+
+![Sign In Page Arabic](./public/screenshots/sign-in-ar.png)
+
+**Onboarding Page:**
+
+![Onboarding Page English](./public/screenshots/onboarding-page-en.png)
+
+![Onboarding Page Arabic](./public/screenshots/onboarding-page-ar.png)
+
+---
+
+**Role Selection Page:**
+
+![Role Selection Page English](./public/screenshots/role-page-en.png)
+
+![Role Selection Page Arabic](./public/screenshots/role-page-ar.png)
+
+---
+
+**Student Profile Page:**
+
+![Student Profile Page English](./public/screenshots/student-profile-en.png)
+
+![Student Profile Page Arabic](./public/screenshots/student-profile-ar.png)
+
+---
 
 ## ✨ Features
 
