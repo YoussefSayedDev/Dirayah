@@ -14,8 +14,11 @@ const StudentProfileSchema = z.object({
   courseCode: z.string().optional(),
   dateOfBirth: z
     .string()
-    .optional()
-    .transform((val) => (val ? new Date(val) : undefined)),
+    .min(1, "Date of birth is required")
+    .transform((date) => {
+      // Convert the date string to ISO DateTime format
+      return new Date(date).toISOString();
+    }),
 });
 
 export async function PUT(req: NextRequest) {

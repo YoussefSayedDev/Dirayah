@@ -28,14 +28,19 @@ export default function StudentCompletionForm() {
     try {
       // Update profile with personal info
       if (data.student.personalInfo) {
-        await updateProfile(
+        const updateProfileRes = await updateProfile(
           data.student.personalInfo.firstName || "",
           data.student.personalInfo.lastName || "",
         );
+
+        if (updateProfileRes?.error) {
+          toast.error(t("errors.failedToSave"));
+          return;
+        }
       }
 
       // Update student profile
-      await updateStudentProfile(
+      const updateStudentProfileRes = await updateStudentProfile(
         data.student.interests || [],
         data.student.grade || "",
         data.student.school || "",
@@ -45,8 +50,21 @@ export default function StudentCompletionForm() {
         data.student.personalInfo?.dateOfBirth || "",
       );
 
+      if (updateStudentProfileRes?.error) {
+        toast.error(t("errors.failedToSave"));
+        return;
+      }
+
       // Mark onboarding as completed
-      await updateOnboardingProgress(true, 4);
+      const updateOnboardingProgressRes = await updateOnboardingProgress(
+        true,
+        4,
+      );
+
+      if (updateOnboardingProgressRes?.error) {
+        toast.error(t("errors.failedToSave"));
+        return;
+      }
 
       toast.success(t("success"));
 

@@ -130,6 +130,7 @@ export const useUserStore = create<UserState>()(
         educationLevel,
         courses,
         courseCode,
+        dateOfBirth,
       ) => {
         const user = get().user;
         if (!user) return { error: formatError("User not authenticated") };
@@ -142,6 +143,7 @@ export const useUserStore = create<UserState>()(
             educationLevel,
             courses,
             courseCode,
+            dateOfBirth,
           });
           set({
             user: {
@@ -153,6 +155,7 @@ export const useUserStore = create<UserState>()(
                 educationLevel,
                 courses,
                 courseCode,
+                dateOfBirth,
               },
             },
             isLoading: false,

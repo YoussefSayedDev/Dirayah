@@ -30,7 +30,7 @@ type OnboardingState = {
   setStudentPersonalInfo: (
     firstName: string,
     lastName: string,
-    dateOfBirth?: string,
+    dateOfBirth: string,
   ) => void;
   setStudentEducationInfo: (
     interests: string[],
@@ -67,7 +67,7 @@ export const useOnboardingStore = create<OnboardingState>()(
               personalInfo: {
                 firstName,
                 lastName,
-                dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : undefined,
+                dateOfBirth: dateOfBirth,
               },
             },
           },

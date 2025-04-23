@@ -23,11 +23,11 @@ export function FirstStep() {
 
   // Update the store whenever form data changes
   useEffect(() => {
-    setStudentPersonalInfo(
-      formData.firstName,
-      formData.lastName,
-      formData.dateOfBirth,
-    );
+    const dateOfBirth = formData.dateOfBirth
+      ? new Date(formData.dateOfBirth + "T00:00:00.000Z").toISOString()
+      : formData.dateOfBirth;
+
+    setStudentPersonalInfo(formData.firstName, formData.lastName, dateOfBirth);
   }, [formData, setStudentPersonalInfo]);
 
   // Function to update form data
