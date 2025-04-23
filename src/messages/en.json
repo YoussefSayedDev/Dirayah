@@ -174,7 +174,13 @@
       "options": {
         "student": {
           "title": "Student",
-          "description": "Access courses, track progress, and connect with teachers"
+          "description": "Access courses, track progress, and connect with teachers",
+          "success": "Student profile is all set up",
+          "errors": {
+            "noStudentData": "No student data found. Please try again.",
+            "failedToSave": "Failed to save student profile",
+            "failedToUpdateProgress": "Failed to update student progress"
+          }
         },
         "teacher": {
           "title": "Teacher",
@@ -192,7 +198,9 @@
       "errors": {
         "initFailedTitle": "Initialization Failed",
         "tryRefreshing": "Please try refreshing the page.",
-        "userStore": "Failed to initialize user data"
+        "userStore": "Failed to initialize user data",
+        "failedToUpdateRole": "Failed to update role",
+        "userStoreFailed": "Failed to initialize user data"
       }
     },
     "student": {

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useOnboardingStore } from "@/lib/stores/onboardingStore";
 import { useUserStore } from "@/lib/stores/userStore";
 import { CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,9 +16,11 @@ export default function StudentCompletionForm() {
     useUserStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const t = useTranslations("Onboarding.role.options.student");
+
   const handleSubmit = async () => {
     if (!data.student) {
-      toast.error("No student data found");
+      toast.error(t("errors.noStudentData"));
       return;
     }
 
@@ -45,7 +48,7 @@ export default function StudentCompletionForm() {
       // Mark onboarding as completed
       await updateOnboardingProgress(true, 4);
 
-      toast.success("Profile successfully created!");
+      toast.success(t("success"));
 
       // Reset onboarding data
       resetOnboardingData();
@@ -55,8 +58,8 @@ export default function StudentCompletionForm() {
         router.push("/dashboard");
       }, 1500);
     } catch (error) {
-      console.error("Error saving data:", error);
-      toast.error("Failed to save your information");
+      console.error(t("errors.failedToSave"), error);
+      toast.error(t("errors.failedToSave"));
     } finally {
       setIsSubmitting(false);
     }

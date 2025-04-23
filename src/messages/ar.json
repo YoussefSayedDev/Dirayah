@@ -180,7 +180,13 @@
       "options": {
         "student": {
           "title": "طالب",
-          "description": "الوصول إلى الدورات، تتبع تقدمك، والتواصل مع المعلمين"
+          "description": "الوصول إلى الدورات، تتبع تقدمك، والتواصل مع المعلمين",
+          "success": "تم إعداد ملف الطالب بنجاح",
+          "errors": {
+            "noStudentData": "لم يتم العثور على بيانات طالب. يرجى المحاولة مرة أخرى.",
+            "failedToSave": "فشل حفظ ملف الطالب",
+            "failedToUpdateProgress": "فشل تحديث تقدم الطالب"
+          }
         },
         "teacher": {
           "title": "معلم",
@@ -199,6 +205,7 @@
         "initFailedTitle": "فشل التهيئة",
         "tryRefreshing": "يرجى محاولة تحديث الصفحة.",
         "userStore": "فشل تهيئة بيانات المستخدم",
+        "failedToUpdateRole": "فشل تحديث الدور",
         "userStoreFailed": "فشل تهيئة بيانات المستخدم"
       }
     },

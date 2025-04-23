@@ -1,16 +1,22 @@
 import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
-// import { AuthProvider } from "@/providers/auth-provider";
+import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Directions, Languages, Locale } from "@/types/localization";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-// import { Inter } from "next/font/google";
+import { Inter, Tajawal } from "next/font/google";
 import { notFound } from "next/navigation";
 import "./globals.css";
-// const inter = Inter({ subsets: ["latin"] });
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-english" });
+const tajawal = Tajawal({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -39,8 +45,18 @@ export default async function RootLayout({
     (locale as Locale) === Languages.Arabic ? Directions.RTL : Directions.LTR;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`antialiased`}>
+    <html
+      lang={locale}
+      dir={dir}
+      className={`${inter.variable} ${tajawal.variable}`}
+      suppressHydrationWarning
+    >
+      <body
+        className={cn(
+          "antialiased",
+          locale === Languages.Arabic ? "font-arabic" : "font-english",
+        )}
+      >
         <SessionProvider>
           <NextIntlClientProvider messages={messages}>
             {/* <AuthProvider> */}

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useOnboardingStore } from "@/lib/stores/onboardingStore";
 import { useUserStore } from "@/lib/stores/userStore";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -20,6 +21,8 @@ export default function StudentOnboardingWrapper() {
   const { setCurrentStep } = useOnboardingStore();
   const { updateOnboardingProgress } = useUserStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const t = useTranslations("Onboarding.role.options.student");
 
   // Get the step from URL parameter or default to 1
   const currentStep = searchParams.has("step")
@@ -50,7 +53,7 @@ export default function StudentOnboardingWrapper() {
         await updateOnboardingProgress(false, currentStep + 1);
         router.push(`/onboarding/student-profile?step=${currentStep + 1}`);
       } catch {
-        toast.error("Failed to update progress");
+        toast.error(t("errors.failedToUpdateProgress"));
       } finally {
         setIsSubmitting(false);
       }

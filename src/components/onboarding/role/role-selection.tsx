@@ -66,9 +66,9 @@ export function RoleSelection({ user }: RoleSelectionProps) {
           break;
       }
     } catch (error) {
-      console.error("Error updating role:", error);
+      console.error(t("errors.failedToUpdateRole"), error);
       // Show toast with error message
-      toast.error("Failed to update role");
+      toast.error(t("errors.failedToUpdateRole"));
       setSelectedRole(null);
     }
   };
@@ -80,12 +80,12 @@ export function RoleSelection({ user }: RoleSelectionProps) {
         setInitError(null); // Clear any previous error on successful set
       } else {
         // Handle the case where user prop is unexpectedly null/undefined
-        throw new Error("User data is missing.");
+        throw new Error(t("errors.userStoreFailed"));
       }
     } catch (error) {
       const errorMessage =
         t("errors.userStore") || "Failed to initialize user data";
-      console.error("Error setting user in store:", error);
+      console.error(t("errors.userStore"), error);
       setInitError(errorMessage);
       toast.error(errorMessage);
     }
